@@ -29,7 +29,7 @@ export default class App extends Component {
     localStorage.setItem(TOKEN, token)
   }
 
-  logout = (token) => {
+  logout = () => {
     this.setState({ token:'' })
     localStorage.setItem(TOKEN, '')
   }
