@@ -1,6 +1,6 @@
 import request from 'superagent';
 
-const URL = 'https://guarded-thicket-69575.herokuapp.com/';
+const URL = 'https://guarded-thicket-69575.herokuapp.com';
 
 export async function signUp (email, password) {
     const data = await request
