@@ -25,4 +25,4 @@ export default class LocationPrompt extends React.Component {
             </div>
         )
     }
-}
+} //yup
