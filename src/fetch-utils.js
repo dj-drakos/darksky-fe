@@ -2,6 +2,7 @@ import request from 'superagent';
 
 const backendURL = 'https://guarded-thicket-69575.herokuapp.com';
 const solarSystemURL = 'https://api.le-systeme-solaire.net/rest/bodies?data=id,englishName,isPlanet,moons,moon,gravity,aroundPlanet,planet';
+const apodURL = 'https://apodapi.herokuapp.com/api';
 
 export async function signUp (email, password) {
     const data = await request
@@ -42,3 +43,9 @@ export async function getLocationAPI (city) {
     return (location);
 }
 
+export async function getApodAPI () {
+    const { body } = await request 
+        .get(apodURL)
+
+    return body;
+}
