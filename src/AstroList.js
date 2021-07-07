@@ -22,7 +22,7 @@ export default class AstroList extends Component {
 
     render() {
 
-        console.log(mungeAsteroids(this.state.bodies));
+        console.log(this.state.bodies);
         return (
             <div>
                 <h1>Astro List</h1>
