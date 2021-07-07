@@ -10,6 +10,7 @@ export function getLocation() {
 }
 
 export function setLocation(location) {
+    console.log(location);
     const locationString = JSON.stringify(location);
     localStorage.setItem(LOCATION, locationString)
 }
