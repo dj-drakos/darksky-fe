@@ -1,17 +1,16 @@
 import React, { Component } from 'react'
 //import { NavLink } from 'react-router-dom';
-import { mungePlanets } from './munge.js';
+import { mungeAsteroids, mungeMoons, mungePlanets } from './munge.js';
 import { getSolarSystemAPI } from './fetch-utils.js'
-import AstroDetail from './AstroDetail.js';
+import AstroDisplay from './AstroDisplay.js';
 
 export default class AstroList extends Component {
 
     state = {
         bodies: [],
-        planets: [],
-        moons: [],
-        other: [],
-
+        wishlist: [],
+        search: '',
+        page: 1,
     }
 
     componentDidMount = async () => {
@@ -23,11 +22,11 @@ export default class AstroList extends Component {
 
     render() {
 
-        console.log(mungePlanets(this.state.bodies));
+        console.log(mungeAsteroids(this.state.bodies));
         return (
             <div>
                 <h1>Astro List</h1>
-                
+
                 <div className="search-menu">
                     <label>
                         Dark Sky Objects
@@ -43,7 +42,9 @@ export default class AstroList extends Component {
                     <button>Search</button>
                 </div>
 
-                <AstroDetail  />
+                <AstroDisplay
+                display={this.state.bodies}
+                />
             </div>
         )
     }
