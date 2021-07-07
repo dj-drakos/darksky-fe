@@ -14,6 +14,7 @@ import Header from './Header.js';
 import JournalDetail from './JournalDetail';
 import JournalList from './JournalList';
 import LandingPage from './LandingPage';
+import LoggedInHeader from './LoggedInHeader';
 import Main from './Main';
 import Planets from './Planets';
 import SignUp from './SignUp';
@@ -31,7 +32,7 @@ export default class App extends Component {
   }
 
   logout = () => {
-    this.setState({ token:'' })
+    this.setState({ token: '' })
     localStorage.setItem(TOKEN, '')
   }
 
@@ -40,7 +41,7 @@ export default class App extends Component {
     return (
 
       <Router>
-          <Header logout={this.logout}/>
+          { this.state.token ?  <LoggedInHeader logout={this.logout} /> : <Header /> }
           <Switch>
             <Route exact path='/' render={
               (routerProps) => 
