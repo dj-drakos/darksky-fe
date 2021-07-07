@@ -13,3 +13,11 @@ SKATEBOARD
 
 NEXT
 1. PUT CRAP ON PAGE
+
+
+URL THAT GETS JUST MOONS YAY
+https://api.le-systeme-solaire.net/rest/bodies?data=id,englishName,aroundPlanet,planet&filter[]=isPlanet,eq&filter[]=aroundPlanet,neq
+
+URL THAT RETURNS ASTEROIDS (not a moon, is not a planet, doesn't go around any planet)
+https://api.le-systeme-solaire.net/rest/bodies?data=id,englishName,aroundPlanet,planet&filter[]=isPlanet,eq&filter[]=aroundPlanet,eq
+

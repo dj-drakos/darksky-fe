@@ -2,17 +2,23 @@ import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom';
 import { mungePlanets } from './munge.js';
 import { getSolarSystemAPI } from './fetch-utils.js'
+import AstroDetail from './AstroDetail.js';
 
 export default class AstroList extends Component {
 
     state = {
-        bodies: []
+        bodies: [],
+        planets: [],
+        moons: [],
+        other: [],
     }
 
     componentDidMount = async () => {
         const solarSystemAPI = await getSolarSystemAPI();
         this.setState({ bodies: solarSystemAPI.bodies });
     }
+
+
 
     render() {
 
@@ -30,7 +36,16 @@ export default class AstroList extends Component {
                 - button somewhere else to see only favorites
 
                 */}
+                <label>
+                    Select
+                    <select>
+                        <option value="planets">Planets</option>
+                        <option value="moons">Moons</option>
+                        <option value="other">Other</option>
+                    </select>
+                </label>
 
+                <AstroDetail  />
                 <NavLink to="/planets">Planets</NavLink> 
             </div>
         )
