@@ -18,7 +18,6 @@ import LoggedInHeader from './LoggedInHeader';
 import Main from './Main';
 import Planets from './Planets';
 import SignUp from './SignUp';
-import JournalList from './JournalList';
 
 const TOKEN = 'TOKEN';
 export default class App extends Component {
