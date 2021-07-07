@@ -32,7 +32,7 @@ export async function getSolarSystemAPI () {
 
 export async function getLocationAPI (city) {
     const { body } = await request 
-        .get(`https://us1.locationiq.com/v1/search.php?key=pk.00832111835699fdf09b6bafa0965ea8&q=${city}&format=json`)
+        .get(`https://us1.locationiq.com/v1/search.php?key=${process.env.LOCATION}&q=${city}&format=json`)
     console.log(body);
     const location = { 
         latitude: body[0].lat, 
