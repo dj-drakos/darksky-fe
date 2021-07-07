@@ -14,8 +14,6 @@ export default class AstroList extends Component {
 
                 - button somewhere else to see only favorites
 
-                
-
                 */}
             </div>
         )

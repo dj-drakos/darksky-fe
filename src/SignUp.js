@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { signUp } from "./fetch-utils.js";
 
+
 export default class SignUp extends Component {
 
     state = {
@@ -11,6 +12,7 @@ export default class SignUp extends Component {
     handleSubmit = async (e) => {
         e.preventDefault();
         const token = await signUp(this.state.email, this.state.password);
+        console.log(token);
         this.props.login(token);
         this.props.history.push('/main');
     } 
@@ -24,7 +26,7 @@ export default class SignUp extends Component {
     }
 
     render() {
-
+        console.log(this.props);
         return (
             <div>
                 <h1>Sign Up</h1>
