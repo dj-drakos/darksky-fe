@@ -6,16 +6,17 @@ import {
   Switch,
   Redirect
 } from 'react-router-dom';
-import Header from './Header.js';
-import LandingPage from './LandingPage';
-import SignUp from './SignUp';
-import Main from './Main';
-import AstroList from './AstroList';
-import AstroDetail from './AstroDetail';
-import JournalList from './JournalList';
-import JournalDetail from './JournalDetail';
-import Footer from './Footer';
 import AboutUs from './AboutUs';
+import AstroDetail from './AstroDetail';
+import AstroList from './AstroList';
+import Footer from './Footer';
+import Header from './Header.js';
+import JournalDetail from './JournalDetail';
+import JournalList from './JournalList';
+import LandingPage from './LandingPage';
+import Main from './Main';
+import Planets from './Planets';
+import SignUp from './SignUp';
 
 const TOKEN = 'TOKEN';
 export default class App extends Component {
@@ -79,6 +80,12 @@ export default class App extends Component {
               (routerProps) =>
               this.state.token ? 
               <JournalDetail token={this.props.token} {...routerProps} /> : <Redirect to="/" />
+          } />
+
+            <Route exact path="/planets" render={
+              (routerProps) =>
+              this.state.token ? 
+              <Planets token={this.props.token} {...routerProps} /> : <Redirect to="/" />
           } />
 
             <Route exact path='/about-us' component={AboutUs}/>
