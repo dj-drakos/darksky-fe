@@ -7,7 +7,7 @@ export default class AstroDisplay extends Component {
                 {this.props.display.map(item => 
                     <>
                     <h2>
-                        {item.englishName}
+                        {item.englishName === '' ? item.id : item.englishName}
                     </h2>
                     <p>
                         gravity:
