@@ -25,7 +25,7 @@ export default class App extends Component {
   }
 
   login = (token) => {
-    this.setState({ token:token })
+    this.setState({ token: token })
     localStorage.setItem(TOKEN, token)
   }
 
@@ -41,23 +41,46 @@ export default class App extends Component {
       <Router>
           <Header logout={this.logout}/>
           <Switch>
-            <Route exact path='/' login={this.login} component={LandingPage}/>
-            <Route exact path='/signup' login={this.login} component={SignUp}/>
-            <Route exact path="/main" render={(routerProps) =>
-              this.state.token ? <Main token={this.props.token} {...routerProps} /> : <Redirect to="/" />
+            <Route exact path='/' render={
+              (routerProps) => 
+              <LandingPage login={this.login} {...routerProps} />
+            } />
+
+            <Route exact path='/signup' render={
+              (routerProps) => 
+              <SignUp login={this.login} {...routerProps} />
+            } />
+
+            <Route exact path="/main" render={
+              (routerProps) =>
+              this.state.token ? 
+              <Main token={this.props.token} {...routerProps} /> : <Redirect to="/" />
           } />
-            <Route exact path="/astro-list" render={(routerProps) =>
-              this.state.token ? <AstroList token={this.props.token} {...routerProps} /> : <Redirect to="/" />
+
+            <Route exact path="/astro-list" render={
+              (routerProps) =>
+              this.state.token ? 
+              <AstroList token={this.props.token} {...routerProps} /> : <Redirect to="/" />
           } />
-            <Route exact path="/astro-detail" render={(routerProps) =>
-              this.state.token ? <AstroDetail token={this.props.token} {...routerProps} /> : <Redirect to="/" />
+
+            <Route exact path="/astro-detail" render={
+              (routerProps) =>
+              this.state.token ? 
+              <AstroDetail token={this.props.token} {...routerProps} /> : <Redirect to="/" />
           } />
-            <Route exact path="/journal-list" render={(routerProps) =>
-              this.state.token ? <JournalList token={this.props.token} {...routerProps} /> : <Redirect to="/" />
+
+            <Route exact path="/journal-list" render={
+              (routerProps) =>
+              this.state.token ? 
+              <JournalList token={this.props.token} {...routerProps} /> : <Redirect to="/" />
           } />
-            <Route exact path="/journal-detail" render={(routerProps) =>
-              this.state.token ? <JournalDetail token={this.props.token} {...routerProps} /> : <Redirect to="/" />
+
+            <Route exact path="/journal-detail" render={
+              (routerProps) =>
+              this.state.token ? 
+              <JournalDetail token={this.props.token} {...routerProps} /> : <Redirect to="/" />
           } />
+
             <Route exact path='/about-us' component={AboutUs}/>
           </Switch>
           <Footer />

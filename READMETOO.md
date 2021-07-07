@@ -10,3 +10,6 @@ SKATEBOARD
 3. wheel 2: object list
 4. wheel 3: journal list
 5. wheel 4: dashboard/main page/astromapi
+
+NEXT
+1. PUT CRAP ON PAGE
