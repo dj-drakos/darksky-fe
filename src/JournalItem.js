@@ -1,17 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-// import request from 'superagent';
-
-// const backendURL = 'https://guarded-thicket-69575.herokuapp.com/api/journals';
-
 export default class JournalItem extends Component {
-
-    // fetchJournalEntry = async (id, token) => {
-    //     const { body } = await request
-    //         .get(`${backendURL}/api/journals/${id}`)
-    //         .set('Authorization', token)
-    //     return body;
-    // }
 
     render() {
         return (
