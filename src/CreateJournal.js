@@ -43,9 +43,14 @@ export default class CreateJournal extends Component {
         this.setState({ journal_entry: e.target.value })
     }
 
-    handleInputChange = async (e) => {
+    handleImageInputChange = async (e) => {
         e.preventDefault();
         this.setState({ image_url: e.target.value })
+    }
+
+    handleTitleInputChange = async (e) => {
+        e.preventDefault();
+        this.setState({ englishname: e.target.value })
     }
 
     render() {
@@ -53,10 +58,13 @@ export default class CreateJournal extends Component {
         return (
             <div className="main">
                 <form onSubmit={this.handleSubmit}>
+                    <label>
+                        <input placeholder="title" onChange={this.handleTitleInputChange} />
+                    </label>
                     <textarea placeholder="observe anything interesting?" onChange={this.handleTextChange} >
                     </textarea>
                     <label>
-                        <input onChange={this.handleInputChange} type="url" />
+                        <input onChange={this.handleImageInputChange} type="url" />
                     </label>
                     <button>
                         Done
