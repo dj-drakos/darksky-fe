@@ -18,6 +18,7 @@ import LoggedInHeader from './LoggedInHeader';
 import Main from './Main';
 import Planets from './Planets';
 import SignUp from './SignUp';
+import CreateJournal from './CreateJournal';
 
 const TOKEN = 'TOKEN';
 export default class App extends Component {
@@ -77,11 +78,11 @@ export default class App extends Component {
               <Journal token={this.state.token} {...routerProps} /> : <Redirect to="/" />
           } />
 
-            {/* <Route exact path="/journal-list" render={
+            <Route exact path="/create" render={
               (routerProps) =>
               this.state.token ? 
-              <JournalList token={this.state.token} {...routerProps} /> : <Redirect to="/" />
-          } /> */}
+              <CreateJournal token={this.state.token} {...routerProps} /> : <Redirect to="/" />
+          } />
 
             <Route exact path="/journal-detail/:entryId" render={
               (routerProps) =>
