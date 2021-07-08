@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 //import { NavLink } from 'react-router-dom';
 import request from 'superagent';
-import { mungeAsteroids, mungeMoons, mungePlanets } from './munge.js';
-import { getSolarSystemAPI } from './fetch-utils.js'
+import { getPlanets, getMoons, getOthers, getSolarSystemAPI } from './api-utils.js';
 import AstroDisplay from './AstroDisplay.js';
 
 export default class AstroList extends Component {
@@ -20,7 +19,18 @@ export default class AstroList extends Component {
     }
 
     handleCategorySelection = async (e) => {
-        await this.setState({ bodies: e.target.value });
+        if(e.target.value === "planets") {
+           const solarSystemAPI = await getPlanets(1) 
+           await this.setState({ bodies: solarSystemAPI.bodies, pageNumber: 1})
+        } 
+        if(e.target.value === "moons") {
+            const solarSystemAPI = await getMoons(1) 
+            await this.setState({ bodies: solarSystemAPI.bodies, pageNumber: 1})
+         } 
+         if(e.target.value === "other") {
+            const solarSystemAPI = await getOthers(1) 
+            await this.setState({ bodies: solarSystemAPI.bodies, pageNumber: 1})
+         } 
     }
 
     handleNextPage = async (e) => {
@@ -39,7 +49,7 @@ export default class AstroList extends Component {
 
     render() {
 
-        console.log(this.state.bodies.length);
+        console.log(this.state.bodies);
         return (
             <div>
                 <h1>Astro List</h1>
@@ -47,7 +57,7 @@ export default class AstroList extends Component {
                 <div className="search-menu">
                     <label>
                         Dark Sky Objects
-                        <select>
+                        <select onChange={this.handleCategorySelection}>
                             <option value="">Select Type</option>
                             <option value="planets">Planets</option>
                             <option value="moons">Moons</option>
