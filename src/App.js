@@ -7,8 +7,8 @@ import {
   Redirect
 } from 'react-router-dom';
 import AboutUs from './AboutUs';
-import AstroDetail from './AstroDetail';
 import AstroList from './AstroList';
+import CreateJournal from './CreateJournal';
 import Footer from './Footer';
 import Header from './Header.js';
 import JournalDetail from './JournalDetail';
@@ -16,9 +16,8 @@ import Journal from './Journal';
 import LandingPage from './LandingPage';
 import LoggedInHeader from './LoggedInHeader';
 import Main from './Main';
-import Planets from './Planets';
 import SignUp from './SignUp';
-import CreateJournal from './CreateJournal';
+import Wishlist from './Wishlist';
 
 const TOKEN = 'TOKEN';
 export default class App extends Component {
@@ -66,12 +65,6 @@ export default class App extends Component {
               <AstroList token={this.state.token} {...routerProps} /> : <Redirect to="/" />
           } />
 
-            <Route exact path="/astro-detail" render={
-              (routerProps) =>
-              this.state.token ? 
-              <AstroDetail token={this.state.token} {...routerProps} /> : <Redirect to="/" />
-          } />
-
             <Route exact path="/journal" render={
               (routerProps) =>
               this.state.token ? 
@@ -90,10 +83,10 @@ export default class App extends Component {
               <JournalDetail token={this.state.token} {...routerProps} /> : <Redirect to="/" />
           } />
 
-            <Route exact path="/planets" render={
+            <Route exact path="/wishlist" render={
               (routerProps) =>
               this.state.token ? 
-              <Planets token={this.state.token} {...routerProps} /> : <Redirect to="/" />
+              <Wishlist token={this.state.token} {...routerProps} /> : <Redirect to="/" />
           } />
 
             <Route exact path='/about-us' component={AboutUs}/>

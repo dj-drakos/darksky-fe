@@ -41,3 +41,21 @@ export async function getApodAPI () {
 
     return body;
 }
+
+export async function addToWishlist (listItem, token) {
+    const data = await request
+    .post(`${backendURL}/api/wishlist`)
+    .set('Authorization', token)
+    .send(listItem);
+    
+    return data.body;
+}
+
+export async function getWishlist (token) {
+    const data = await request
+    .get(`${backendURL}/api/wishlist`)
+    .set('Authorization', token)
+
+    return data.body;
+}
+
