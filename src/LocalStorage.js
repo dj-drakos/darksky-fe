@@ -26,3 +26,17 @@ export function setToken(token) {
     const tokenString = JSON.stringify(token);
     localStorage.setItem(TOKEN, tokenString)
 }
+
+export function getName() {
+    const rawName = localStorage.getItem(TOKEN);
+    if (!rawName)
+        return ('Astro-Body');
+    const Name = JSON.parse(rawName);
+    return Name;
+}
+
+export function setName(Name) {
+    const nameString = JSON.stringify(Name);
+    localStorage.setItem(TOKEN, nameString)
+}
+

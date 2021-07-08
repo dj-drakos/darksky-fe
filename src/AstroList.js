@@ -39,16 +39,15 @@ export default class AstroList extends Component {
         this.setState({ search: e.target.value });
     }
 
-    doSearch = async () => {
+    handleClick = async () => {
         const solarSystemAPI = await getSolarSystemAPI(this.state.pageNumber, this.state.filter, this.state.search);
         this.setState({ bodies: solarSystemAPI })
     }
 
     render(){
 
-        console.log(this.state.search);
         return (
-            <div>
+            <div className='main'>
                 <h1>Astro List</h1>
 
                 <div className="search-menu">
@@ -63,20 +62,18 @@ export default class AstroList extends Component {
                     </label>
                     <input placeholder= "Search Objects by Name" onChange={this.handleSearchChange}>
                     </input>
-                    <button onClick={this.doSearch}>Search</button>
+                    <button onClick={this.handleClick}>Search</button>
                 </div>
 
-                <AstroDisplay token={this.props.token}
-                display={this.state.bodies}
-                />
+                <AstroDisplay token={this.props.token} display={this.state.bodies} />
 
                 {this.state.pageNumber !== 1 && 
                 <button onClick={this.handlePreviousPage}>
                     Previous
                 </button>
                 }
-               
-               {
+
+                {
                 this.state.bodies.length === 20 &&
                 <button onClick={this.handleNextPage}>
                     Next Page 
