@@ -34,6 +34,8 @@ export default class CreateJournal extends Component {
             date: this.createDate(),
             image_url: this.state.image_url
         }, this.props.token)
+
+        this.props.history.push('/journal')
     }
 
     handleTextChange = async (e) => {
