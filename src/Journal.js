@@ -30,7 +30,7 @@ export default class Journal extends Component {
     render() {
         console.log(this.state);
         return (
-            <div>
+            <div className="main">
                 <h1>Journal List</h1>
                 <nav>
                     <NavLink to="/create">
