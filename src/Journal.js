@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import request from 'superagent';
 import JournalList from './JournalList';
-import { getToken } from './LocalStorage';
+import { NavLink } from 'react-router-dom';
 
 const backendURL = 'https://guarded-thicket-69575.herokuapp.com/api/journals';
 
@@ -12,13 +12,6 @@ export default class Journal extends Component {
         journals: [],
     }
 
-
-    componentDidMount = async () => {
-        const token = getToken();
-        const journals = await this.fetchJournals(token);
-        this.setState({ journals: journals})
-    }
-
     fetchJournals = async (token) => {
         const { body } = await request
             .get(backendURL)
@@ -26,13 +19,24 @@ export default class Journal extends Component {
         return body;
     }
 
+    componentDidMount = async () => {
+        const journals = await this.fetchJournals(this.props.token);
+        this.setState({ journals: journals})
+    }
+
+
 
 
     render() {
-        console.log(this.props);
+        console.log(this.state);
         return (
             <div>
                 <h1>Journal List</h1>
+                <nav>
+                    <NavLink to="/create">
+                        New Entry
+                    </NavLink>
+                </nav>
                 <main>
                     {this.state.journals.map(item => <JournalList entry={item} />)}
                 </main>

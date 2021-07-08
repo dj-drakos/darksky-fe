@@ -1,52 +1,91 @@
 import React, { Component } from 'react'
-import { NavLink } from 'react-router-dom';
-import { mungePlanets } from './munge.js';
-import { getSolarSystemAPI } from './fetch-utils.js'
-import AstroDetail from './AstroDetail.js';
+//import { NavLink } from 'react-router-dom';
+import request from 'superagent';
+import { getPlanets, getMoons, getOthers, getSolarSystemAPI } from './api-utils.js';
+import AstroDisplay from './AstroDisplay.js';
 
 export default class AstroList extends Component {
 
     state = {
         bodies: [],
-        planets: [],
-        moons: [],
-        other: [],
+        wishlist: [],
+        search: '',
+        pageNumber: 1,
     }
 
     componentDidMount = async () => {
-        const solarSystemAPI = await getSolarSystemAPI();
+        const solarSystemAPI = await getSolarSystemAPI(this.state.pageNumber);
         this.setState({ bodies: solarSystemAPI.bodies });
     }
 
+    handleCategorySelection = async (e) => {
+        if(e.target.value === "planets") {
+           const solarSystemAPI = await getPlanets(1) 
+           await this.setState({ bodies: solarSystemAPI.bodies, pageNumber: 1})
+        } 
+        if(e.target.value === "moons") {
+            const solarSystemAPI = await getMoons(1) 
+            await this.setState({ bodies: solarSystemAPI.bodies, pageNumber: 1})
+         } 
+         if(e.target.value === "other") {
+            const solarSystemAPI = await getOthers(1) 
+            await this.setState({ bodies: solarSystemAPI.bodies, pageNumber: 1})
+         } 
+    }
+
+    handleNextPage = async (e) => {
+        
+        await this.setState({pageNumber: this.state.pageNumber + 1});
+        const solarSystemAPI = await getSolarSystemAPI(this.state.pageNumber);
+        this.setState({ bodies: solarSystemAPI.bodies });
+    }
+  
+    handlePreviousPage = async (e) => {
+        await this.setState({pageNumber: this.state.pageNumber - 1});
+        const solarSystemAPI = await getSolarSystemAPI(this.state.pageNumber);
+        this.setState({ bodies: solarSystemAPI.bodies });
+  }
 
 
     render() {
 
-        console.log(mungePlanets(this.state.bodies));
+        console.log(this.state.bodies);
         return (
             <div>
                 <h1>Astro List</h1>
-                {/* need inputs for filters
-                - controlled input for user:
-                - text input for names (hit englishName + aroundPlanet planet)
-                - dropdown for planets / moons / other objects
-                - submit button
-                -reset button
 
-                - button somewhere else to see only favorites
+                <div className="search-menu">
+                    <label>
+                        Dark Sky Objects
+                        <select onChange={this.handleCategorySelection}>
+                            <option value="">Select Type</option>
+                            <option value="planets">Planets</option>
+                            <option value="moons">Moons</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </label>
+                    <input placeholder= "Search Objects by Name">
+                    </input>
+                    <button>Search</button>
+                </div>
 
-                */}
-                <label>
-                    Select
-                    <select>
-                        <option value="planets">Planets</option>
-                        <option value="moons">Moons</option>
-                        <option value="other">Other</option>
-                    </select>
-                </label>
+                <AstroDisplay
+                display={this.state.bodies}
+                />
 
-                <AstroDetail  />
-                <NavLink to="/planets">Planets</NavLink> 
+                {this.state.pageNumber !== 1 && 
+                <button onClick={this.handlePreviousPage}>
+                    Previous
+                </button>
+                }
+               
+               {
+                this.state.bodies.length === 20 &&
+                <button onClick={this.handleNextPage}>
+                    Next Page 
+                </button>
+                }
+                
             </div>
         )
     }
