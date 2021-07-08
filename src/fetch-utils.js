@@ -1,7 +1,7 @@
 import request from 'superagent';
 
 const backendURL = 'https://guarded-thicket-69575.herokuapp.com';
-const solarSystemURL = 'https://api.le-systeme-solaire.net/rest/bodies?order=englishName,asc&page=5,20';
+const apodURL = 'https://apodapi.herokuapp.com/api';
 
 export async function signUp (email, password) {
     const data = await request
@@ -23,13 +23,6 @@ export async function login (email, password) {
     return data.body.token;
 }
 
-export async function getSolarSystemAPI () {
-    const { body } = await request 
-        .get(solarSystemURL)
-
-    return body;
-}
-
 export async function getLocationAPI (city) {
     const { body } = await request 
         .get(`https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATION}&q=${city}&format=json`)
@@ -42,3 +35,9 @@ export async function getLocationAPI (city) {
     return (location);
 }
 
+export async function getApodAPI () {
+    const { body } = await request 
+        .get(apodURL)
+
+    return body;
+}
