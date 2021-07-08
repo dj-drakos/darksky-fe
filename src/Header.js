@@ -7,7 +7,6 @@ export default class Header extends Component {
         return (
             <div className="header">
                 <NavLink to="/main">Astromapi</NavLink>
-                <NavLink to="/">Login</NavLink>
                 <NavLink to="/signup">Sign Up</NavLink>
             </div>
         )

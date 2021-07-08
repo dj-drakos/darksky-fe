@@ -1,12 +1,13 @@
-:root {
-  --pad: 10px;
-  box-sizing: border-box;
-}
-
 .header {
   display: flex;
   justify-content: space-evenly;
   padding: var(--pad);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  padding: calc(2 * var(--pad)) calc(5 * var(--pad));
 }
 
 .footer {

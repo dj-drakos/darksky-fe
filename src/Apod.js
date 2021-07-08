@@ -21,6 +21,7 @@ export default class Apod extends Component {
 
         return (
             <div>
+                <h2>NASA Astronomy Picture of the Day</h2>
                 {this.state.media_type === 'video' ? <iframe src={this.state.url} title='video of the day'></iframe> : 
                 <img src={this.state.url} alt='img of the day'></img>}
             </div>

@@ -26,7 +26,7 @@ export default class SignUp extends Component {
 
     render() {
         return (
-            <div>
+            <div  className='main'>
                 <h1>Sign Up</h1>
                 <form onSubmit={this.handleSubmit}>
                     <label>

@@ -15,11 +15,10 @@ export default class AstroDisplay extends Component {
     }
 
     render() {
-        console.log(this.state.wishlist);
         return (
             <div className="astro-display">
                 {this.props.display.map(item => 
-                    <div>
+                    <div className="astro-item" key={item.id}>
                         <h2>
                             { item.englishName === '' ? item.id : item.englishName }
                         </h2>
@@ -37,20 +36,21 @@ export default class AstroDisplay extends Component {
                         </p>
                         
                         {
-                        !this.state.wishlist.find(wish => {
+                        !this.state.wishlist.find(wish => 
+                            {
                             const name = item.englishName === '' ? item.id : item.englishName;
-                            console.log(wish, name);
-                            return name === wish;}) 
+                            return name === wish;
+                            }
+                        )
                             
-                            && 
-                            
-                            <button onClick={
-                            async () => {
-                            const name = item.englishName === '' ? item.id : item.englishName;
-                            await addToWishlist({ englishname: name }, this.props.token);}
-                            }>Add to Wishlist
-                            </button>
+                        && 
                         
+                        <button onClick={ 
+                            async () => { 
+                                const name = item.englishName === '' ? item.id : item.englishName;
+                                await addToWishlist({ englishname: name }, this.props.token);}
+                            }>Add to Wishlist
+                        </button>
                         }
 
                         <button>Make a Journal</button>
