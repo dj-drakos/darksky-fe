@@ -6,6 +6,7 @@ export default class JournalItem extends Component {
         return (
             <div>
                 <Link to={`/journal-detail/${this.props.item.id}`} >
+                    <img alt="milky way galaxy" src={this.props.item.image_url} />
                     <h4>
                         {this.props.item.date}
                     </h4>
