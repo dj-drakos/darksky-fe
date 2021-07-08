@@ -1,10 +1,11 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import JournalItem from './JournalItem';
 
 export default class JournalList extends Component {
     render() {
         return (
             <div>
-                <h1>Journal List</h1>
+                <JournalItem item={this.props.entry} />
             </div>
         )
     }

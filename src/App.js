@@ -12,7 +12,7 @@ import AstroList from './AstroList';
 import Footer from './Footer';
 import Header from './Header.js';
 import JournalDetail from './JournalDetail';
-import JournalList from './JournalList';
+import Journal from './Journal';
 import LandingPage from './LandingPage';
 import LoggedInHeader from './LoggedInHeader';
 import Main from './Main';
@@ -56,37 +56,43 @@ export default class App extends Component {
             <Route exact path="/main" render={
               (routerProps) =>
               this.state.token ? 
-              <Main token={this.props.token} {...routerProps} /> : <Redirect to="/" />
+              <Main token={this.state.token} {...routerProps} /> : <Redirect to="/" />
           } />
 
             <Route exact path="/astro-list" render={
               (routerProps) =>
               this.state.token ? 
-              <AstroList token={this.props.token} {...routerProps} /> : <Redirect to="/" />
+              <AstroList token={this.state.token} {...routerProps} /> : <Redirect to="/" />
           } />
 
             <Route exact path="/astro-detail" render={
               (routerProps) =>
               this.state.token ? 
-              <AstroDetail token={this.props.token} {...routerProps} /> : <Redirect to="/" />
+              <AstroDetail token={this.state.token} {...routerProps} /> : <Redirect to="/" />
           } />
 
-            <Route exact path="/journal-list" render={
+            <Route exact path="/journal" render={
               (routerProps) =>
               this.state.token ? 
-              <JournalList token={this.props.token} {...routerProps} /> : <Redirect to="/" />
+              <Journal token={this.state.token} {...routerProps} /> : <Redirect to="/" />
           } />
 
-            <Route exact path="/journal-detail" render={
+            {/* <Route exact path="/journal-list" render={
               (routerProps) =>
               this.state.token ? 
-              <JournalDetail token={this.props.token} {...routerProps} /> : <Redirect to="/" />
+              <JournalList token={this.state.token} {...routerProps} /> : <Redirect to="/" />
+          } /> */}
+
+            <Route exact path="/journal-detail/:entryId" render={
+              (routerProps) =>
+              this.state.token ? 
+              <JournalDetail token={this.state.token} {...routerProps} /> : <Redirect to="/" />
           } />
 
             <Route exact path="/planets" render={
               (routerProps) =>
               this.state.token ? 
-              <Planets token={this.props.token} {...routerProps} /> : <Redirect to="/" />
+              <Planets token={this.state.token} {...routerProps} /> : <Redirect to="/" />
           } />
 
             <Route exact path='/about-us' component={AboutUs}/>
