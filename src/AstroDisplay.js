@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
 
 export default class AstroDisplay extends Component {
+
+
     render() {
+
+
         return (
             <div className="astro-display">
                 {this.props.display.map(item => 
@@ -21,6 +25,8 @@ export default class AstroDisplay extends Component {
                         Radius in Kilometers:
                         {item.meanRadius}
                     </p>
+                    <button>Add to wishlist</button>
+                    <button>Start Journal</button>
                     </>
                     )}
                 
