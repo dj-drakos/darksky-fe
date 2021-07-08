@@ -26,8 +26,8 @@ export default class LandingPage extends Component {
     render() {
 
         return (
-            <div>
-                <h1>Landing Page</h1>
+            <div  className='main'>
+                <h1>Astromapi</h1>
                 <form onSubmit={this.handleSubmit}>
                     <label>
                         <input type="email" placeholder="email" onChange={this.handleEmailChange} />
