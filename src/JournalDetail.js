@@ -56,14 +56,15 @@ export default class JournalDetail extends Component {
     }
 
     handleDelete = async () => {
-
+        this.deleteEntry(this.props.match.params.entryId, this.props.token);
+        await this.props.history.push('/journal')
     }
 
     render() {
         console.log(this.state.journalEntry.length && this.state.journalEntry[0].journal_entry);
         console.log(this.state.journalEntry.length && this.state.formEntry)
         return (
-            <div>
+            <div className="main">
                 <form onSubmit={this.handleSubmit}>
                     {
                         this.state.journalEntry.length && <textarea onChange={this.handleChange} value={this.state.formEntry}></textarea>

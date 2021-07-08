@@ -14,7 +14,7 @@ export default class CreateJournal extends Component {
         journal_entry: 'Log your notes',
         englishname: 'Astro-Body',
         date: this.createDate(),
-        image_url: '',
+        image_url: 'https://www.astronomytrek.com/wp-content/uploads/2010/01/milky-way-galaxy.jpg',
     }
 
 
@@ -51,7 +51,7 @@ export default class CreateJournal extends Component {
     render() {
         console.log(this.state);
         return (
-            <div>
+            <div className="main">
                 <form onSubmit={this.handleSubmit}>
                     <textarea placeholder="observe anything interesting?" onChange={this.handleTextChange} >
                     </textarea>
