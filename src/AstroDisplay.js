@@ -13,18 +13,15 @@ export default class AstroDisplay extends Component {
         })
         this.setState({ wishlist: mungedWishlist })
     }
-    
+
     render() {
-
-        const name = this.props.display.englishName === '' ? this.props.display.id : this.props.display.englishName;
         console.log(this.state.wishlist);
-
         return (
             <div className="astro-display">
                 {this.props.display.map(item => 
                     <div>
                         <h2>
-                            {item.englishName === '' ? item.id : item.englishName}
+                            { item.englishName === '' ? item.id : item.englishName }
                         </h2>
                         <p>
                             gravity:
@@ -40,14 +37,19 @@ export default class AstroDisplay extends Component {
                         </p>
                         
                         {
-                        // const  = item.englishName === '' ? item.id : item.englishName;
-                        !this.state.wishlist.filter(wish => name === wish) && 
+                        !this.state.wishlist.find(wish => {
+                            const name = item.englishName === '' ? item.id : item.englishName;
+                            console.log(wish, name);
+                            return name === wish;}) 
+                            
+                            && 
                             
                             <button onClick={
                             async () => {
-                            // const name = item.englishName === '' ? item.id : item.englishName;
+                            const name = item.englishName === '' ? item.id : item.englishName;
                             await addToWishlist({ englishname: name }, this.props.token);}
-                        }>Add to Wishlist</button>
+                            }>Add to Wishlist
+                            </button>
                         
                         }
 
