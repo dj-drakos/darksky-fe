@@ -1,14 +1,18 @@
 import React, { Component } from 'react'
 import LocationPrompt from './LocationPrompt';
+import Apod from './Apod';
 
 export default class Main extends Component {
+    handleSearch = () => {
+        this.history.push('./astro-list')
+    }
     render() {
-        console.log(process.env.REACT_APP_LOCATION);
         return (
             <div>
-                <img src='https://www.7timer.info/bin/astro.php?lon=-122.17&lat=45.09&ac=0&lang=en&unit=british&output=internal&tzshift=0' alt='yup'></img>
                 <h1>Main Page</h1>
                 <LocationPrompt></LocationPrompt>
+                <Apod />
+                <button onClick={this.handleSearch}></button>
             </div>
         )
     }

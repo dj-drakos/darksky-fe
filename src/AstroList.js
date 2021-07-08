@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-//import { NavLink } from 'react-router-dom';
-import request from 'superagent';
-import { getPlanets, getMoons, getOthers, getSolarSystemAPI } from './api-utils.js';
+import { getSolarSystemAPI } from './api-utils.js';
 import AstroDisplay from './AstroDisplay.js';
 
 export default class AstroList extends Component {
@@ -11,45 +9,44 @@ export default class AstroList extends Component {
         wishlist: [],
         search: '',
         pageNumber: 1,
+        filter: 'all'
     }
 
     componentDidMount = async () => {
-        const solarSystemAPI = await getSolarSystemAPI(this.state.pageNumber);
-        this.setState({ bodies: solarSystemAPI.bodies });
+        const solarSystemAPI = await getSolarSystemAPI(this.state.pageNumber, this.state.filter, this.state.search);
+        this.setState({ bodies: solarSystemAPI });
     }
 
     handleCategorySelection = async (e) => {
-        if(e.target.value === "planets") {
-           const solarSystemAPI = await getPlanets(1) 
-           await this.setState({ bodies: solarSystemAPI.bodies, pageNumber: 1})
-        } 
-        if(e.target.value === "moons") {
-            const solarSystemAPI = await getMoons(1) 
-            await this.setState({ bodies: solarSystemAPI.bodies, pageNumber: 1})
-         } 
-         if(e.target.value === "other") {
-            const solarSystemAPI = await getOthers(1) 
-            await this.setState({ bodies: solarSystemAPI.bodies, pageNumber: 1})
-         } 
+        await this.setState({ filter: e.target.value, pageNumber: 1})
+        const solarSystemAPI = await getSolarSystemAPI(this.state.pageNumber, this.state.filter, this.state.search);
+        this.setState({ bodies: solarSystemAPI });
     }
 
     handleNextPage = async (e) => {
-        
         await this.setState({pageNumber: this.state.pageNumber + 1});
-        const solarSystemAPI = await getSolarSystemAPI(this.state.pageNumber);
-        this.setState({ bodies: solarSystemAPI.bodies });
+        const solarSystemAPI = await getSolarSystemAPI(this.state.pageNumber, this.state.filter, this.state.search);
+        this.setState({ bodies: solarSystemAPI });
     }
-  
+
     handlePreviousPage = async (e) => {
         await this.setState({pageNumber: this.state.pageNumber - 1});
-        const solarSystemAPI = await getSolarSystemAPI(this.state.pageNumber);
-        this.setState({ bodies: solarSystemAPI.bodies });
-  }
+        const solarSystemAPI = await getSolarSystemAPI(this.state.pageNumber, this.state.filter, this.state.search);
+        this.setState({ bodies: solarSystemAPI });
+    }
 
+    handleSearchChange = (e) => {
+        this.setState({ search: e.target.value });
+    }
 
-    render() {
+    doSearch = async () => {
+        const solarSystemAPI = await getSolarSystemAPI(this.state.pageNumber, this.state.filter, this.state.search);
+        this.setState({ bodies: solarSystemAPI })
+    }
 
-        console.log(this.state.bodies);
+    render(){
+
+        console.log(this.state.search);
         return (
             <div>
                 <h1>Astro List</h1>
@@ -58,18 +55,18 @@ export default class AstroList extends Component {
                     <label>
                         Dark Sky Objects
                         <select onChange={this.handleCategorySelection}>
-                            <option value="">Select Type</option>
+                            <option value="all">Select Type</option>
                             <option value="planets">Planets</option>
                             <option value="moons">Moons</option>
                             <option value="other">Other</option>
                         </select>
                     </label>
-                    <input placeholder= "Search Objects by Name">
+                    <input placeholder= "Search Objects by Name" onChange={this.handleSearchChange}>
                     </input>
-                    <button>Search</button>
+                    <button onClick={this.doSearch}>Search</button>
                 </div>
 
-                <AstroDisplay
+                <AstroDisplay token={this.props.token}
                 display={this.state.bodies}
                 />
 
