@@ -66,7 +66,7 @@ export default class AstroList extends Component {
                     <button onClick={this.doSearch}>Search</button>
                 </div>
 
-                <AstroDisplay
+                <AstroDisplay token={this.props.token}
                 display={this.state.bodies}
                 />
 

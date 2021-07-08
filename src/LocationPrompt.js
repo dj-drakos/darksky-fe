@@ -12,7 +12,7 @@ export default class LocationPrompt extends React.Component {
     }
 
     handleSubmit = async e => {
-        // e.preventDefault();
+        e.preventDefault();
         setLocation(await getLocationAPI(this.state.location))
     }
     render() {
@@ -28,4 +28,4 @@ export default class LocationPrompt extends React.Component {
             </div>
         )
     }
-} //yup
+} 

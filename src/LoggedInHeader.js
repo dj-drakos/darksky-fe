@@ -10,6 +10,7 @@ export default class Header extends Component {
             <div className="header">
                 <NavLink to="/main">Astromapi</NavLink>
                 <NavLink to="/astro-list">Search</NavLink>
+                <NavLink to="/wishlist">Wishlist</NavLink>
                 <NavLink to="/journal">Journal</NavLink>
                 <NavLink to="/" onClick={this.props.logout}>Log Out</NavLink>
             </div>
