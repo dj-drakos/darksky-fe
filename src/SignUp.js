@@ -28,15 +28,20 @@ export default class SignUp extends Component {
         return (
             <div  className='main'>
                 <h1>Sign Up</h1>
-                <form onSubmit={this.handleSubmit}>
-                    <label>
-                        <input type="email" placeholder="email" onChange={this.handleEmailChange} />
-                    </label>
-                    <label>
-                        <input type="password" placeholder="password" onChange={this.handlePasswordChange} />
-                    </label>
-                    <button>Sign Up</button>
-                </form>
+                <div className='login'>
+                    <p >
+                    🪐 Create a free account to access search tools, local weather conditions, and a journal to keep track of your Dark Sky adventures. 
+                    </p>
+                    <form onSubmit={this.handleSubmit}>
+                        <label>
+                            <input type="email" placeholder="email" onChange={this.handleEmailChange} />
+                        </label>
+                        <label>
+                            <input type="password" placeholder="password" onChange={this.handlePasswordChange} />
+                        </label>
+                        <button>Sign Up</button>
+                    </form>
+                </div>
             </div>
         )
     }
