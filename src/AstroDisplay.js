@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { addToWishlist, getWishlist } from './fetch-utils.js';
+import { setName } from './LocalStorage.js';
 
 export default class AstroDisplay extends Component {
     state = {
@@ -12,6 +13,11 @@ export default class AstroDisplay extends Component {
             return item.englishname;
         })
         this.setState({ wishlist: mungedWishlist })
+    }
+
+    handleCreateJournal = (name) => {
+        setName(name);
+        this.props.history.push('./create');
     }
 
     render() {
@@ -53,7 +59,9 @@ export default class AstroDisplay extends Component {
                         </button>
                         }
 
-                        <button>Make a Journal</button>
+                        <form onSubmit={() => this.handleCreateJournal(item.englishName === '' ? item.id : item.englishName)}>
+                            <button>Make a Journal</button>
+                        </form>
                     </div>
                     )}
                 
