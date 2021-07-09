@@ -48,8 +48,7 @@ export default class AstroList extends Component {
 
         return (
             <div className='main'>
-                <h1>Astro List</h1>
-
+                <h1>Dark Sky Objects</h1>
                 <div className="search-menu">
                     <label>
                         Filter by Category:
