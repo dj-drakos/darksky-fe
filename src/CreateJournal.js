@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import request from 'superagent';
 import { getName } from './LocalStorage';
-const backendURL = 'https://guarded-thicket-69575.herokuapp.com';
+import { addJournalEntry } from './fetch-utils.js';
 
 export default class CreateJournal extends Component {
     createDate = () => {
@@ -18,19 +17,10 @@ export default class CreateJournal extends Component {
         image_url: 'https://www.astronomytrek.com/wp-content/uploads/2010/01/milky-way-galaxy.jpg',
     }
 
-
-    addJournalEntry = async (entryData, token) => {
-        const { body } = await request
-            .post(`${backendURL}/api/journals`)
-            .send(entryData)
-            .set('Authorization', token)
-        return body;
-    }
-
     handleSubmit = async (e) => {
         e.preventDefault();
         const name = getName()
-        await this.addJournalEntry({
+        await addJournalEntry({
             journal_entry: this.state.journal_entry,
             englishname: name,
             date: this.createDate(),

@@ -23,18 +23,6 @@ export async function login (email, password) {
     return data.body.token;
 }
 
-export async function getLocationAPI (city) {
-    const { body } = await request 
-        .get(`https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATION}&q=${city}&format=json`)
-    console.log(body);
-    const location = { 
-        latitude: body[0].lat, 
-        longitude: body[0].lon, 
-        name: body[0].display_name 
-    }
-    return (location);
-}
-
 export async function getApodAPI () {
     const { body } = await request 
         .get(apodURL)
@@ -59,3 +47,39 @@ export async function getWishlist (token) {
     return data.body;
 }
 
+export async function fetchJournals (token) {
+    const { body } = await request
+        .get(`${backendURL}/api/journals`)
+        .set('Authorization', token)
+    return body;
+}
+
+export async function addJournalEntry (entryData, token) {
+    const { body } = await request
+        .post(`${backendURL}/api/journals`)
+        .send(entryData)
+        .set('Authorization', token)
+    return body;
+}
+
+export async function fetchEntry (id, token) {
+    const { body } = await request
+        .get(`${backendURL}/api/journals/${id}`)
+        .set('Authorization', token);
+    return body;
+}
+
+export async function updateEntry (id, data, token) {
+    const { body } = await request
+        .put(`${backendURL}/api/journals/${id}`)
+        .send(data)
+        .set('Authorization', token)
+    return body;
+}
+
+export async function deleteEntry (id, token) {
+    const { body } = await request
+        .delete(`${backendURL}/api/journals/${id}`)
+        .set('Authorization', token)
+    return body
+}

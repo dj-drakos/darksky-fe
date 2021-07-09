@@ -1,5 +1,5 @@
 import React from 'react'
-import { getLocationAPI } from './fetch-utils'
+import { getLocationAPI } from './api-utils.js'
 import { setLocation, getLocation } from './LocalStorage'
 
 export default class LocationPrompt extends React.Component {
