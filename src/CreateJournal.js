@@ -46,6 +46,7 @@ export default class CreateJournal extends Component {
     }
 
     render() {
+        console.log(this.state);
         return (
             <div className="main">
                 <h1>Create Journal</h1>
@@ -56,14 +57,12 @@ export default class CreateJournal extends Component {
                     </label>
                     <textarea placeholder="observe anything interesting?" onChange={this.handleTextChange} >
                     </textarea>
-                    <div className='journal-image'>
+                    <span className='journal-image'>
                         <label>
                             <input onChange={this.handleImageInputChange} type="url" placeholder="image url"/>
                         </label>
-                        <button>
-                            Done
-                        </button>
-                    </div>
+                        <button>Done</button>
+                    </span>
                 </form>
             </div>
         )

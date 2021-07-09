@@ -29,7 +29,7 @@ export default class Wishlist extends Component {
                             this.state.wishlist.map(item => 
                                 <div className='wish-item'>
                                     <h2>{item.englishname}</h2>
-                                    <form onSubmit={() => this.handleCreateJournal(item.english)}>
+                                    <form onSubmit={() => this.handleCreateJournal(item.englishname)}>
                                         <button className='make-journal-button'>Make a Journal</button>
                                     </form>
                                 </div>
