@@ -29,16 +29,13 @@ export default class AstroDisplay extends Component {
                             { item.englishName === '' ? item.id : item.englishName }
                         </h2>
                         <p>
-                            gravity:
-                            {item.gravity}
+                            gravity: {item.gravity}
                         </p>
                         <p>
-                            date discovered:
-                            {item.discoveryDate}
+                            date discovered: {item.discoveryDate}
                         </p>
                         <p>
-                            Radius in Kilometers:
-                            {item.meanRadius}
+                            radius: {item.meanRadius} KM
                         </p>
                         
                         {

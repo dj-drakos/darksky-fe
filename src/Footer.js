@@ -5,9 +5,8 @@ export default class Footer extends Component {
     render() {
         return (
             <div className="footer">
-                <Link to="/about-us">
-                    About Us
-                </Link>
+                <Link to="/about-us">About Us</Link>
+                <p>☾ 2021 AstroLocus</p>
             </div>
         )
     }
