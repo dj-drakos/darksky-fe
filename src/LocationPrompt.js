@@ -32,12 +32,24 @@ export default class LocationPrompt extends React.Component {
             <div className="flex-element">
                 <h2>Viewing Conditions Forecast</h2>
                 <form onSubmit={this.handleSubmit}>
-                    <label>Location: 
-                        <input type="text" onChange={this.locationChange}></input>
-                    </label>
-                    <button><p>Set</p></button><br/>
+                    <div>
+                        <label>
+                            <input type="text" placeholder='location' onChange={this.locationChange}></input>
+                        </label>
+                        <button>Set</button><br/>
+                    </div>
                     <img src={`https://www.7timer.info/bin/astro.php?lon=${location.longitude}&lat=${location.latitude}&ac=0&lang=en&unit=british&output=internal&tzshift=0`} alt='viewing conditions' />
                 </form>
+                <div className='weather-key'>
+                    <h4>Key:</h4>
+                    <p><span>clear</span> <img src='./about_astro_cloud.png' alt='cloud cover' /> cloudy</p>
+                    <p><span>clear</span><img src='./about_astro_seeing.png' alt='astronomical seeing' />turbulent</p>
+                    <p><span>clear</span><img src='./about_astro_transparency.png' alt='atmospheric transparency' />hazy</p>
+                    <p><span>stable</span><img src='./about_astro_unstable.png' alt='astronomical instability' />unstable</p>
+                    <p><span>dry</span> <img src='./about_astro_rh.png' alt='relative humidity' />humid</p>
+                    <p><span>calm</span><img src='./about_astro_wind.png' alt='wind' />strong</p>
+                    <p><span>rain / snow</span><img src='./about_astro_rainsnow.png' alt='chance rain or snow' /></p>
+                </div>
             </div>
         )
     }
