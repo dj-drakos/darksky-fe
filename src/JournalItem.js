@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 export default class JournalItem extends Component {
 
     render() {
+        console.log(this.props.item)
         return (
 
                 <Link className="journal-item" to={`/journal-detail/${this.props.item.id}`} >
