@@ -11,26 +11,27 @@ export default class AboutUs extends Component {
                         <img className="bio-pic" src="https://media-exp1.licdn.com/dms/image/C5603AQE287gRluCYbA/profile-displayphoto-shrink_400_400/0/1621478870959?e=1631145600&v=beta&t=A1bkeCBGJPhO_ikmcv5avaRxNN-e-LG8DQn97NNW568" alt="DJ Drakos" />
                     <article>
                         <h2>DJ Drakos
-                            <a target="_blank" rel='noreferrer' href="https://www.linkedin.com/in/sofianais/"><img className='icon' src='./linkedin.png' alt='LinkedIn' /></a>
-                            <a target="_blank" rel='noreferrer' href="https://github.com/sofiatejada"><img className='icon' src='./github.png' alt='Github' />
+                            <a target="_blank" rel='noreferrer' href="https://www.linkedin.com/in/dj-drakos/"><img className='icon' src='./linkedin.png' alt='LinkedIn' /></a>
+                            <a target="_blank" rel='noreferrer' href="https://github.com/dianajodrakos"><img className='icon' src='./github.png' alt='Github' />
                             </a>
                         </h2>
                         <p>
-                            Insert Bio Here
+                        I'm a full stack software engineer, whole systems thinker, and art school dropout. I love solving a good logic puzzle and filtering signal from noise. Sometimes I knit, bike, or sleep, as needed.
+  
                         </p>
                     </article>
                 </div>
 
                 <div className='bio-item'>
-                    <img className="bio-pic" src="https://media-exp1.licdn.com/dms/image/D5635AQHCPhSDFCUp1A/profile-framedphoto-shrink_400_400/0/1623739955189?e=1625878800&v=beta&t=uUUMkjjx_M6K5E9LjB6M5-UMwWCFS0TojCj8Tc-SjrM" alt="Kubisiak" />
+                    <img className="bio-pic" src="https://media-exp1.licdn.com/dms/image/C5603AQHj3Ur5UOz9IQ/profile-displayphoto-shrink_400_400/0/1625847270208?e=1631145600&v=beta&t=8a_jgN-fYS906YzL7NmVWyFUOXBY0cyeFfFTo8wpMRQ" alt="Kubisiak" />
                     <article>
-                        <h2>Kubisiak
-                            <a target="_blank" rel='noreferrer' href="https://www.linkedin.com/in/sofianais/"><img className='icon' src='./linkedin.png' alt='LinkedIn' /></a>
-                            <a target="_blank" rel='noreferrer' href="https://github.com/sofiatejada"><img className='icon' src='./github.png' alt='Github' />
+                        <h2>.Kubisiak
+                            <a target="_blank" rel='noreferrer' href="https://www.linkedin.com/in/kubisiak/"><img className='icon' src='./linkedin.png' alt='LinkedIn' /></a>
+                            <a target="_blank" rel='noreferrer' href="https://github.com/mckubisiak"><img className='icon' src='./github.png' alt='Github' />
                             </a>
                         </h2>
                         <p>
-                            Insert Bio Here
+                        A queer trans software engineer. I love mutually developing with people and supporting everyone's common as well as individuals goals.  <a href="https://kubisiak.darkroom.tech/">Photography</a> and <a href= "https://docs.google.com/document/d/1Tb3ETGO7tTbJFjT9ZHOJqpmd-qvIyq-JAkz8kT4pQfY/edit">Mutual Aid</a> are other avenues I like to participate in community.
                         </p>
                     </article>
                 </div>
@@ -54,12 +55,16 @@ export default class AboutUs extends Component {
                         <img className="bio-pic" src="https://media-exp1.licdn.com/dms/image/C4E03AQG9gSEPQJjNYg/profile-displayphoto-shrink_400_400/0/1620148404124?e=1631145600&v=beta&t=QvyV9IKqEmGUY9YTxmcBmfyPzVNYudBEVVbMN9sAWFQ" alt="Isaac Ewing" />
                     <article>
                         <h2>Isaac Ewing
-                            <a target="_blank" rel='noreferrer' href="https://www.linkedin.com/in/sofianais/"><img className='icon' src='./linkedin.png' alt='LinkedIn' /></a>
-                            <a target="_blank" rel='noreferrer' href="https://github.com/sofiatejada"><img className='icon' src='./github.png' alt='Github' />
+                            <a target="_blank" rel='noreferrer' href="https://www.linkedin.com/in/isaac-ewing-6ba3b5211/"><img className='icon' src='./linkedin.png' alt='LinkedIn' /></a>
+                            <a target="_blank" rel='noreferrer' href="https://github.com/Isaac-Ewing"><img className='icon' src='./github.png' alt='Github' />
                             </a>
                         </h2>
                         <p>
-                            Insert Bio Here
+                        I am a Full-stack Developer who loves to solve complex coding problems involving math. In my free time I 
+                        enjoy playing various sports with my friends poorly, reading, and playing video games (also poorly). 
+                        I originally became interested in programming when I decided that I didn't want to use my degree in Chemical 
+                        Engineering, and within a few days of first writing code, I knew that I wanted to do it professionally.
+  
                         </p>
                     </article>
                 </div>
@@ -67,8 +72,8 @@ export default class AboutUs extends Component {
                         <img className="bio-pic" src="https://media-exp1.licdn.com/dms/image/C4E03AQHTL9yonVG_eA/profile-displayphoto-shrink_400_400/0/1620147576714?e=1631145600&v=beta&t=6TXXJUgjfP3bLZf1vbDi_1_BPyYzwx7axotUvhqRWiQ" alt="Ben Francka" />
                     <article>
                         <h2>Ben Francka
-                            <a target="_blank" rel='noreferrer' href="https://www.linkedin.com/in/sofianais/"><img className='icon' src='./linkedin.png' alt='LinkedIn' /></a>
-                            <a target="_blank" rel='noreferrer' href="https://github.com/sofiatejada"><img className='icon' src='./github.png' alt='Github' />
+                            <a target="_blank" rel='noreferrer' href="https://www.linkedin.com/in/ben-francka/"><img className='icon' src='./linkedin.png' alt='LinkedIn' /></a>
+                            <a target="_blank" rel='noreferrer' href="https://github.com/BenFrancka"><img className='icon' src='./github.png' alt='Github' />
                             </a>
                         </h2>
                         <p>
