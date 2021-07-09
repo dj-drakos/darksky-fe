@@ -59,7 +59,7 @@ img, iframe {
     padding: var(--pad);
 }
 
-.astro-item h2 {
+.astro-item h2, .wish-item h2 {
     background: -webkit-linear-gradient(120deg, hotpink, rgb(0, 207, 207), #8F43E5);
     background-clip: text;
     -webkit-background-clip: text;
@@ -72,11 +72,18 @@ img, iframe {
     margin: 0 var(--pad) var(--pad) 0;
 }
 
-.astro-item p {
+.astro-item p, .wish-item p {
     line-height: 1.2rem;
 }
 .astro-item form {
     display: inline-block;
+}
+
+.wish-item {
+    width: 200px;
+    border: 1px solid var(--color1);
+    margin: var(--pad) calc(var(--pad) / 2);
+    padding: var(--pad);
 }
 
 input, select, button {
@@ -101,11 +108,6 @@ h2 {
     letter-spacing: .09rem;
     text-transform: uppercase;
     margin: 0 var(--pad) var(--pad) 0;
-}
-
-
-p {
-    
 }
 
 a {

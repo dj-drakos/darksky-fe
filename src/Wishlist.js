@@ -16,11 +16,11 @@ export default class Wishlist extends Component {
         return (
             <div  className='main'>
                 <h1>Wishlist</h1>
-                <div>
+                <div className='astro-display'>
                     {
                         this.state.wishlist !== [] ? 
                             this.state.wishlist.map(item => 
-                                <div>
+                                <div className='wish-item'>
                                     <h2>{item.englishname}</h2>
                                     <button>Make a Journal</button>
                                 </div>
