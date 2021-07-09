@@ -16,7 +16,7 @@ export default class AboutUs extends Component {
                             </a>
                         </h2>
                         <p>
-                        I'm a full stack software engineer, whole systems thinker, and art school dropout. I love solving a good logic puzzle and filtering signal from noise. Sometimes I knit, bike, or sleep, as needed.
+                        A Full-stack Engineer, whole systems thinker, and art school dropout. I love solving a good logic puzzle and filtering signal from noise. Sometimes I knit, bike, or sleep, as needed.
   
                         </p>
                     </article>
@@ -31,7 +31,7 @@ export default class AboutUs extends Component {
                             </a>
                         </h2>
                         <p>
-                        A queer trans software engineer. I love mutually developing with people and supporting everyone's common as well as individuals goals.  <a href="https://kubisiak.darkroom.tech/">Photography</a> and <a href= "https://docs.google.com/document/d/1Tb3ETGO7tTbJFjT9ZHOJqpmd-qvIyq-JAkz8kT4pQfY/edit">Mutual Aid</a> are other avenues I like to participate in community.
+                        A queer trans Software Engineer. I love mutually developing with people and supporting everyone's common as well as individuals goals.  <a href="https://kubisiak.darkroom.tech/">Photography</a> and <a href= "https://docs.google.com/document/d/1Tb3ETGO7tTbJFjT9ZHOJqpmd-qvIyq-JAkz8kT4pQfY/edit">Mutual Aid</a> are other avenues I like to participate in community.
                         </p>
                     </article>
                 </div>
@@ -44,7 +44,7 @@ export default class AboutUs extends Component {
                         <a target="_blank" rel='noreferrer' href="https://github.com/sofiatejada"><img className='icon' src='./github.png' alt='Github' /></a>
                         </h2>
                         <p>
-                        I'm a Full-stack Developer based in the San Francisco Bay Area. I love to code because it's an exciting and challenging field where I can see myself being an asset to my community and where I know I will feel fulfilled. When I'm not coding, you can find me on Steam, learning to be a better photographer, or reading novels. My favorite languages are Korean and Spanish!
+                        A Full-stack Developer based in the San Francisco Bay Area. I love to code because it's an exciting and challenging field where I can see myself being an asset to my community and where I know I will feel fulfilled. When I'm not coding, you can find me on Steam, learning to be a better photographer, or reading novels. My favorite languages are Korean and Spanish!
                         </p>
                         <p>
                         </p>
@@ -77,7 +77,7 @@ export default class AboutUs extends Component {
                             </a>
                         </h2>
                         <p>
-                        I'm a software developer with a knack for working with teams and solving problems. Considering I grew up on a cattle farm working with my cousins, and have spent over a decade in professional kitchens as a chef working closely with teams of all backgrounds, I feel like I am adept at meeting teammates where they are with respect and enough motivation to keep everyone focused on the task at hand. 
+                        A Full-stack Developer with a knack for working with teams and solving problems. Considering I grew up on a cattle farm working with my cousins, and have spent over a decade in professional kitchens as a chef working closely with teams of all backgrounds, I feel like I am adept at meeting teammates where they are with respect and enough motivation to keep everyone focused on the task at hand. 
                         </p>
                     </article>
                 </div>
