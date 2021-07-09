@@ -37,28 +37,29 @@ export default class AstroDisplay extends Component {
                         <p>
                             radius: {item.meanRadius} KM
                         </p>
-                        
-                        {
-                        !this.state.wishlist.find(wish => 
+                        <div className='buttons'>
                             {
-                            const name = item.englishName === '' ? item.id : item.englishName;
-                            return name === wish;
-                            }
-                        )
-                            
-                        && 
-                        
-                        <button onClick={ 
-                            async () => { 
+                            !this.state.wishlist.find(wish => 
+                                {
                                 const name = item.englishName === '' ? item.id : item.englishName;
-                                await addToWishlist({ englishname: name }, this.props.token);}
-                            }>Add to Wishlist
-                        </button>
-                        }
+                                return name === wish;
+                                }
+                            )
+                                
+                            && 
+                            
+                            <button className='add-wishlist-button' onClick={ 
+                                async () => { 
+                                    const name = item.englishName === '' ? item.id : item.englishName;
+                                    await addToWishlist({ englishname: name }, this.props.token);}
+                                }>Add to Wishlist
+                            </button>
+                            }
 
-                        <form onSubmit={() => this.handleCreateJournal(item.englishName === '' ? item.id : item.englishName)}>
-                            <button>Make a Journal</button>
-                        </form>
+                            <form onSubmit={() => this.handleCreateJournal(item.englishName === '' ? item.id : item.englishName)}>
+                                <button className='make-journal-button'>Make a Journal</button>
+                            </form>
+                        </div>
                     </div>
                     )}
                 

@@ -68,16 +68,16 @@ export default class AstroList extends Component {
 
                 <AstroDisplay token={this.props.token} display={this.state.bodies} history={this.props.history}/>
 
-                <div className='pagination'>
+                <div className='buttons'>
                     {this.state.pageNumber !== 1 && 
-                    <button onClick={this.handlePreviousPage}>
+                    <button className='prev-button' onClick={this.handlePreviousPage}>
                         Prev Page
                     </button>
                     }
 
                     {
                     this.state.bodies.length === 20 &&
-                    <button onClick={this.handleNextPage}>
+                    <button className='next-button' onClick={this.handleNextPage}>
                         Next Page 
                     </button>
                     }

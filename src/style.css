@@ -17,11 +17,39 @@
     margin-right: 100px;
 }
 
+
+h1 {
+    font-family: var(--sans);
+    font-size: 4rem;
+    font-weight: 600;
+    letter-spacing: .12rem;
+    margin: 20px 0;
+    align-self:flex-start;
+}
+
+h2 {
+    display: flex;
+    font-family: var(--mono);
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: .09rem;
+    text-transform: uppercase;
+    margin: 0 var(--pad) var(--pad) 0;
+    background: -webkit-linear-gradient(120deg, hotpink, rgb(0, 207, 207), #8F43E5);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+h4 {
+    margin-top: 5px;
+}
+
 .flex {
-    /* width: min-content; */
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: space-around;
 }
 
 .flex-element {
@@ -32,6 +60,14 @@ img, iframe {
     max-width: 400px;
 }
 
+.icon {
+    width:15px;
+    margin: 0 5px;
+    background: var(--color1);
+    border: 1px solid var(--color1);
+    border-radius: 8px;
+}
+
 .search-menu {
     margin: 20px;
     width: 100%;
@@ -40,9 +76,10 @@ img, iframe {
     align-items: center;
 }
 
-.pagination {
-    width: 80%;
+.buttons {
+    width: 100%;
     display: flex;
+    flex-direction: row-reverse;
     justify-content: space-between;
 }
 
@@ -59,19 +96,6 @@ img, iframe {
     border-radius: 5px;
     margin: 20px;
     padding: 15px;
-}
-
-.astro-item h2, .wish-item h2, article h2 {
-    background: -webkit-linear-gradient(120deg, hotpink, rgb(0, 207, 207), #8F43E5);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-family: var(--mono);
-    font-size: 1.2rem;
-    font-weight: 600;
-    letter-spacing: .09rem;
-    text-transform: uppercase;
-    margin: 0 var(--pad) var(--pad) 0;
 }
 
 .astro-item p, .wish-item p {
@@ -92,20 +116,20 @@ img, iframe {
 
 .journal-entry {
     height: 100%;
+    margin: 20px;
+    /* padding */
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content:flex-start;
 }
 
 .journal-entry textarea {
     height: 150px;
     width: 300px;
     padding: 5px;
+    margin: 30px 0;
     font-family: var(--mono);
-}
-
-.journal-entry textarea:focus {
-    outline: none;
+    letter-spacing: .04rem;
 }
 
 .journal-image {
@@ -116,6 +140,7 @@ img, iframe {
 
 .journal-image button {
     margin: 0;
+    /* align-self:flex-end; */
 }
 
 .journal-entry input {
@@ -128,6 +153,7 @@ img, iframe {
 
 .journal-item {
     display: flex;
+    min-width: 600px;
     margin: calc(var(--pad) * 2);
     box-shadow: 3px 3px var(--color1);
     border: 1px var(--color1) solid;
@@ -142,10 +168,6 @@ img, iframe {
     border-radius: 5px;
 }
 
-.journal-item h4 {
-    margin-top: 5px;
-}
-
 .journal-item:hover {
     transition: 0.3s;
     background: var(--color5);
@@ -153,20 +175,92 @@ img, iframe {
     box-shadow: 2px 2px var(--color1);
 }
 
-
-article {
+.journal-detail {
+    min-width: 800px;
+    min-height: 550px;
     display: flex;
     flex-direction: column;
-    justify-content:flex-end;
-    margin-left: var(--pad);
-    padding: 0 var(--pad);
+    margin: 20px;
+    box-shadow: 3px 3px var(--color1);
+    border: 1px var(--color1) solid;
+    border-radius: 5px;
+    margin: 30px var(--pad);
+    padding: 30px;
 }
 
+.journal-detail img {
+    width: 300px;
+    border: 1px solid var(--color1);
+    border-radius: 5px;
+}
+
+.journal-detail-body {
+    display: flex;
+}
+
+.journal-detail h2 {
+    font-size: 1.7rem;
+}
+
+.journal-edit-buttons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.bio-item {
+    display: flex;
+    width: 100%;
+    max-width: 800px;
+    box-shadow: 3px 3px var(--color1);
+    border: 1px var(--color1) solid;
+    border-radius: 5px;
+    margin: 30px;
+    padding: 20px;
+}
+
+.bio-pic {
+    width: 100px;
+    border: 1px solid var(--color1);
+    border-radius: 5px;
+}
+
+.credits h2 {
+    margin: 30px 0 0 0;
+}
+
+.credits p {
+    margin: 10px 0;
+}
+
+section {
+    height: 100%;
+    margin: 0 var(--pad) 0 0;
+}
+
+article {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-left: var(--pad);
+}
 
 article p {
     font-size: .8rem;
     height: 100%;
+}
 
+article textarea {
+    min-height: 350px; 
+    background: var(--color2);
+    color: var(--color1);
+    font-family: var(--mono);
+    letter-spacing: .04rem;
+    padding: 5px;
+    height: 100%;
+    width: 100%;
 }
 
 input, select, button {
@@ -175,27 +269,14 @@ input, select, button {
     font-family: var(--mono);
 }
 
-h1 {
-    font-family: var(--sans);
-    font-size: 4rem;
-    font-weight: 600;
-    letter-spacing: .12rem;
-    margin: 0 0 var(--pad) 0;
-    align-self:flex-start;
-}
-
-h2 {
-    font-family: var(--mono);
-    font-size: 1.2rem;
-    font-weight: 600;
-    letter-spacing: .09rem;
-    text-transform: uppercase;
-    margin: 0 var(--pad) var(--pad) 0;
+textarea:focus {
+    outline: none;
 }
 
 a {
     color: var(--color1);
     text-decoration: none;
+    font-weight: bold
     
 } 
 
@@ -238,6 +319,14 @@ input:focus {
     overflow: hidden;
 }
 
+.prev-button, .add-wishlist-button {
+    order: 1;
+}
+
+.next-button, .make-journal-button {
+    order: 0;
+}
+
 button {
     cursor: pointer;
     height: calc(var(--pad) * 2.5);
@@ -265,6 +354,21 @@ button:active {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     transform: translate(1px, 1px);
+}
+
+.icon:hover {
+    background: var(--color4);
+    transform: translate(1px, 1px);
+    border: 1px solid var(--color4);
+}
+
+.moon {
+    font-size: 1.1rem;
+    vertical-align: -1px;
+    background: -webkit-linear-gradient(220deg, hotpink, rgb(0, 207, 207), aquamarine, #4b84ff, #8F43E5);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 /* Start https://www.cursors-4u.com */ 

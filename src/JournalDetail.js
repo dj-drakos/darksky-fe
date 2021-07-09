@@ -40,26 +40,36 @@ export default class JournalDetail extends Component {
     render() {
         return (
             <div className="main">
-                {
-                    this.state.journalEntry.length &&
-                    <h4>
-                        {this.state.journalEntry[0].englishname}
-                    </h4>
-                }
-                {
-                    this.state.journalEntry.length && <img src={this.state.journalEntry[0].image_url} alt="astro" />
-                }
-                <form onSubmit={this.handleSubmit}>
-                    {
-                        this.state.journalEntry.length && <textarea onChange={this.handleChange} value={this.state.formEntry}></textarea>
-                    }
-                    <button>
-                        Done
-                    </button>
-                </form>
-                    <button onClick={this.handleDelete}>
-                        Delete
-                    </button>
+                <h1>Edit Journal</h1>
+                <div className='journal-detail'>
+                        {
+                            this.state.journalEntry.length &&
+                            <h2>
+                                {this.state.journalEntry[0].englishname}
+                            </h2>
+                        }
+                    <div className='journal-detail-body'>
+                        <section>
+                            {
+                                this.state.journalEntry.length && <img src={this.state.journalEntry[0].image_url} alt="astro" />
+                            }
+                            {
+                                this.state.journalEntry.length && <h4>{this.state.journalEntry[0].date}</h4>
+                            }
+                        </section>
+                        <article>
+                            <form onSubmit={this.handleSubmit}>
+                            {
+                                this.state.journalEntry.length && <textarea onChange={this.handleChange} value={this.state.formEntry}></textarea>
+                            }
+                            <div className='journal-edit-buttons'>
+                                <button>Save</button>
+                                <button onClick={this.handleDelete}>Delete</button>
+                            </div>
+                            </form>
+                        </article>
+                    </div>
+                </div>
             </div>
         )
     }
