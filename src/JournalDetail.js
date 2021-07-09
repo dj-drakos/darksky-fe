@@ -65,6 +65,15 @@ export default class JournalDetail extends Component {
         console.log(this.state.journalEntry.length && this.state.formEntry)
         return (
             <div className="main">
+                {
+                    this.state.journalEntry.length &&
+                    <h4>
+                        {this.state.journalEntry[0].englishname}
+                    </h4>
+                }
+                {
+                    this.state.journalEntry.length && <img src={this.state.journalEntry[0].image_url} alt="astro" />
+                }
                 <form onSubmit={this.handleSubmit}>
                     {
                         this.state.journalEntry.length && <textarea onChange={this.handleChange} value={this.state.formEntry}></textarea>
