@@ -12,18 +12,23 @@ export default class CreateJournal extends Component {
 
     state = {
         journal_entry: 'Log your notes',
-        englishname: 'Astro-Body',
+        englishname: '',
         date: this.createDate(),
         image_url: 'https://www.astronomytrek.com/wp-content/uploads/2010/01/milky-way-galaxy.jpg',
     }
 
 
+    componentDidMount = async () => {
+        const name = await getName()
+        this.setState({ englishname: name })
+    }
+
+
     handleSubmit = async (e) => {
         e.preventDefault();
-        const name = getName()
         await addJournalEntry({
             journal_entry: this.state.journal_entry,
-            englishname: name,
+            englishname: this.state.englishname,
             date: this.createDate(),
             image_url: this.state.image_url
         }, this.props.token)
@@ -41,11 +46,6 @@ export default class CreateJournal extends Component {
         this.setState({ image_url: e.target.value })
     }
 
-    handleTitleInputChange = async (e) => {
-        e.preventDefault();
-        this.setState({ englishname: e.target.value })
-    }
-
     render() {
         return (
             <div className="main">
@@ -53,9 +53,7 @@ export default class CreateJournal extends Component {
                 <h1>Create Journal</h1>
 
                 <form className='journal-entry' onSubmit={this.handleSubmit}>
-                    <label>
-                        <input className='journal-title' placeholder="Dark Sky Object" onChange={this.handleTitleInputChange} />
-                    </label>
+                    <h2>{this.state.englishname}</h2>
                     <textarea placeholder="observe anything interesting?" onChange={this.handleTextChange} ></textarea>
                     <span className='journal-image'>
                         <label>
