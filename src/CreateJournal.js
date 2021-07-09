@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import request from 'superagent';
 import { getName } from './LocalStorage';
 import { addJournalEntry } from './fetch-utils.js';
 

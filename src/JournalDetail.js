@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import request from 'superagent';
 import { fetchEntry, updateEntry, deleteEntry } from './fetch-utils.js';
 export default class JournalDetail extends Component {
 
