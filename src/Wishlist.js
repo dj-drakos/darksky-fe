@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { getWishlist } from './fetch-utils.js';
+import { setName } from './LocalStorage.js';
 
 export default class Wishlist extends Component {
 
@@ -11,6 +12,12 @@ export default class Wishlist extends Component {
         const data = await getWishlist(this.props.token);
         this.setState({ wishlist: data })
     }
+
+    handleCreateJournal = (name) => {
+        setName(name);
+        this.props.history.push('./create');
+    }
+
     render() {
     console.log(this.state.wishlist);
         return (
@@ -22,7 +29,9 @@ export default class Wishlist extends Component {
                             this.state.wishlist.map(item => 
                                 <div className='wish-item'>
                                     <h2>{item.englishname}</h2>
-                                    <button>Make a Journal</button>
+                                    <form onSubmit={() => this.handleCreateJournal(item.english)}>
+                                        <button className='make-journal-button'>Make a Journal</button>
+                                    </form>
                                 </div>
                             )
                             : <div></div>
