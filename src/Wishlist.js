@@ -19,7 +19,6 @@ export default class Wishlist extends Component {
     }
 
     render() {
-    console.log(this.state.wishlist);
         return (
             <div  className='main'>
                 <h1>Wishlist</h1>

@@ -63,6 +63,7 @@ export default class AboutUs extends Component {
                         </p>
                     </article>
                 </div>
+                
                 <div className='bio-item'>
                         <img className="bio-pic" src="https://media-exp1.licdn.com/dms/image/C4E03AQHTL9yonVG_eA/profile-displayphoto-shrink_400_400/0/1620147576714?e=1631145600&v=beta&t=6TXXJUgjfP3bLZf1vbDi_1_BPyYzwx7axotUvhqRWiQ" alt="Ben Francka" />
                     <article>

@@ -23,20 +23,13 @@ export default class AstroDisplay extends Component {
     render() {
         return (
             <div className="astro-display">
+
                 {this.props.display.map(item => 
                     <div className="astro-item" key={item.id}>
-                        <h2>
-                            { item.englishName === '' ? item.id : item.englishName }
-                        </h2>
-                        <p>
-                            gravity: {item.gravity}
-                        </p>
-                        <p>
-                            date discovered: {item.discoveryDate}
-                        </p>
-                        <p>
-                            radius: {item.meanRadius} KM
-                        </p>
+                        <h2>{ item.englishName === '' ? item.id : item.englishName }</h2>
+                        <p>gravity: {item.gravity}</p>
+                        <p>date discovered: {item.discoveryDate}</p>
+                        <p>radius: {item.meanRadius} KM</p>
                         <div className='buttons'>
                             {
                             !this.state.wishlist.find(wish => 
@@ -45,9 +38,9 @@ export default class AstroDisplay extends Component {
                                 return name === wish;
                                 }
                             )
-                                
+
                             && 
-                            
+
                             <button className='add-wishlist-button' onClick={ 
                                 async () => { 
                                     const name = item.englishName === '' ? item.id : item.englishName;
@@ -62,7 +55,7 @@ export default class AstroDisplay extends Component {
                         </div>
                     </div>
                     )}
-                
+
             </div>
         )
     }

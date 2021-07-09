@@ -17,6 +17,7 @@ export default class CreateJournal extends Component {
         image_url: 'https://www.astronomytrek.com/wp-content/uploads/2010/01/milky-way-galaxy.jpg',
     }
 
+
     handleSubmit = async (e) => {
         e.preventDefault();
         const name = getName()
@@ -46,17 +47,16 @@ export default class CreateJournal extends Component {
     }
 
     render() {
-        console.log(this.state);
         return (
             <div className="main">
+
                 <h1>Create Journal</h1>
 
                 <form className='journal-entry' onSubmit={this.handleSubmit}>
                     <label>
                         <input className='journal-title' placeholder="Dark Sky Object" onChange={this.handleTitleInputChange} />
                     </label>
-                    <textarea placeholder="observe anything interesting?" onChange={this.handleTextChange} >
-                    </textarea>
+                    <textarea placeholder="observe anything interesting?" onChange={this.handleTextChange} ></textarea>
                     <span className='journal-image'>
                         <label>
                             <input onChange={this.handleImageInputChange} type="url" placeholder="image url"/>
@@ -64,6 +64,7 @@ export default class CreateJournal extends Component {
                         <button>Done</button>
                     </span>
                 </form>
+
             </div>
         )
     }

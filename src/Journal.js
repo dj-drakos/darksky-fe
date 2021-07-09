@@ -15,7 +15,6 @@ export default class Journal extends Component {
     }
 
     render() {
-        console.log(this.state);
         return (
             <div className="main">
                 <h1>Journals</h1>
