@@ -8,7 +8,7 @@ export default class Header extends Component {
 
         return (
             <div className="header">
-                <NavLink to="/main">Astromapi</NavLink>
+                <NavLink to="/main">AstroLocus</NavLink>
                 <NavLink to="/astro-list">Search</NavLink>
                 <NavLink to="/wishlist">Wishlist</NavLink>
                 <NavLink to="/journal">Journal</NavLink>

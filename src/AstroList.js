@@ -48,11 +48,10 @@ export default class AstroList extends Component {
 
         return (
             <div className='main'>
-                <h1>Astro List</h1>
-
+                <h1>Dark Sky Objects</h1>
                 <div className="search-menu">
                     <label>
-                        Dark Sky Objects
+                        Filter by Category:
                         <select onChange={this.handleCategorySelection}>
                             <option value="all">Select Type</option>
                             <option value="planets">Planets</option>
@@ -60,25 +59,29 @@ export default class AstroList extends Component {
                             <option value="other">Other</option>
                         </select>
                     </label>
-                    <input placeholder= "Search Objects by Name" onChange={this.handleSearchChange}>
-                    </input>
-                    <button onClick={this.handleClick}>Search</button>
+                    <div>
+                        <input placeholder= "Object Name" onChange={this.handleSearchChange}>
+                        </input>
+                        <button onClick={this.handleClick}>Search</button>
+                    </div>
                 </div>
 
                 <AstroDisplay token={this.props.token} display={this.state.bodies} history={this.props.history}/>
 
-                {this.state.pageNumber !== 1 && 
-                <button onClick={this.handlePreviousPage}>
-                    Previous
-                </button>
-                }
+                <div className='buttons'>
+                    {this.state.pageNumber !== 1 && 
+                    <button className='prev-button' onClick={this.handlePreviousPage}>
+                        Prev Page
+                    </button>
+                    }
 
-                {
-                this.state.bodies.length === 20 &&
-                <button onClick={this.handleNextPage}>
-                    Next Page 
-                </button>
-                }
+                    {
+                    this.state.bodies.length === 20 &&
+                    <button className='next-button' onClick={this.handleNextPage}>
+                        Next Page 
+                    </button>
+                    }
+                </div>
                 
             </div>
         )
