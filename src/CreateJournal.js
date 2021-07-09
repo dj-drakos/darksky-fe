@@ -48,18 +48,22 @@ export default class CreateJournal extends Component {
     render() {
         return (
             <div className="main">
-                <form onSubmit={this.handleSubmit}>
+                <h1>Create Journal</h1>
+
+                <form className='journal-entry' onSubmit={this.handleSubmit}>
                     <label>
-                        <input placeholder="title" onChange={this.handleTitleInputChange} />
+                        <input className='title' placeholder="title" onChange={this.handleTitleInputChange} />
                     </label>
                     <textarea placeholder="observe anything interesting?" onChange={this.handleTextChange} >
                     </textarea>
-                    <label>
-                        <input onChange={this.handleImageInputChange} type="url" />
-                    </label>
-                    <button>
-                        Done
-                    </button>
+                    <div className='journal-image'>
+                        <label>
+                            <input onChange={this.handleImageInputChange} type="url" placeholder="image url"/>
+                        </label>
+                        <button>
+                            Done
+                        </button>
+                    </div>
                 </form>
             </div>
         )
