@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import request from 'superagent';
+// import request from 'superagent';
 import JournalList from './JournalList';
 import { NavLink } from 'react-router-dom';
-
-const backendURL = 'https://guarded-thicket-69575.herokuapp.com/api/journals';
+import { fetchJournals } from './fetch-utils';
 
 export default class Journal extends Component {
 
@@ -12,20 +11,10 @@ export default class Journal extends Component {
         journals: [],
     }
 
-    fetchJournals = async (token) => {
-        const { body } = await request
-            .get(backendURL)
-            .set('Authorization', token)
-        return body;
-    }
-
     componentDidMount = async () => {
-        const journals = await this.fetchJournals(this.props.token);
+        const journals = await fetchJournals(this.props.token);
         this.setState({ journals: journals})
     }
-
-
-
 
     render() {
         console.log(this.state);
