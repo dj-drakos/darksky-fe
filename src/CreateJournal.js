@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import request from 'superagent';
+import { getName } from './LocalStorage';
 const backendURL = 'https://guarded-thicket-69575.herokuapp.com';
 
 export default class CreateJournal extends Component {
@@ -28,9 +29,10 @@ export default class CreateJournal extends Component {
 
     handleSubmit = async (e) => {
         e.preventDefault();
+        const name = getName()
         await this.addJournalEntry({
             journal_entry: this.state.journal_entry,
-            englishname: this.state.englishname,
+            englishname: name,
             date: this.createDate(),
             image_url: this.state.image_url
         }, this.props.token)
@@ -54,7 +56,6 @@ export default class CreateJournal extends Component {
     }
 
     render() {
-        console.log(this.state);
         return (
             <div className="main">
                 <form onSubmit={this.handleSubmit}>

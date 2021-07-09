@@ -1,5 +1,6 @@
 const LOCATION = 'LOCATION'
 const TOKEN = 'TOKEN'
+const NAME = 'NAME'
 
 export function getLocation() {
     const loc = localStorage.getItem(LOCATION);
@@ -26,3 +27,17 @@ export function setToken(token) {
     const tokenString = JSON.stringify(token);
     localStorage.setItem(TOKEN, tokenString)
 }
+
+export function getName() {
+    const rawName = localStorage.getItem(NAME);
+    if (!rawName)
+        return ('Astro-Body');
+    const name = JSON.parse(rawName);
+    return name;
+}
+
+export function setName(Name) {
+    const nameString = JSON.stringify(Name);
+    localStorage.setItem(NAME, nameString)
+}
+

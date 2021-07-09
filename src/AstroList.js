@@ -65,7 +65,7 @@ export default class AstroList extends Component {
                     <button onClick={this.handleClick}>Search</button>
                 </div>
 
-                <AstroDisplay token={this.props.token} display={this.state.bodies} />
+                <AstroDisplay token={this.props.token} display={this.state.bodies} history={this.props.history}/>
 
                 {this.state.pageNumber !== 1 && 
                 <button onClick={this.handlePreviousPage}>
