@@ -47,7 +47,3 @@ export async function getApodAPI () {
     return body;
 }
 
-// export async function search(query) {
-//     const data = await request
-//         .get(`${}`)
-// }
