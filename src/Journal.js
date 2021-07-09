@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-// import request from 'superagent';
 import JournalList from './JournalList';
-import { NavLink } from 'react-router-dom';
 import { fetchJournals } from './fetch-utils';
 
 export default class Journal extends Component {
@@ -20,12 +18,7 @@ export default class Journal extends Component {
         console.log(this.state);
         return (
             <div className="main">
-                <h1>Journal List</h1>
-                <nav>
-                    <NavLink to="/create">
-                        New Entry
-                    </NavLink>
-                </nav>
+                <h1>Journals</h1>
                 <main>
                     {this.state.journals.map(item => <JournalList entry={item} />)}
                 </main>

@@ -54,12 +54,14 @@ img, iframe {
 
 .astro-item {
     width: 370px;
-    border: 1px solid var(--color1);
-    margin: var(--pad) calc(var(--pad) / 2);
+    box-shadow: 4px 4px var(--color1);
+    border: 1px var(--color1) solid;
+    border-radius: 10px;
+    margin: var(--pad) var(--pad);
     padding: var(--pad);
 }
 
-.astro-item h2, .wish-item h2 {
+.astro-item h2, .wish-item h2, article h2 {
     background: -webkit-linear-gradient(120deg, hotpink, rgb(0, 207, 207), #8F43E5);
     background-clip: text;
     -webkit-background-clip: text;
@@ -81,8 +83,10 @@ img, iframe {
 
 .wish-item {
     width: 200px;
-    border: 1px solid var(--color1);
-    margin: var(--pad) calc(var(--pad) / 2);
+    box-shadow: 4px 4px var(--color1);
+    border: 1px var(--color1) solid;
+    border-radius: 10px;
+    margin: var(--pad) var(--pad);
     padding: var(--pad);
 }
 
@@ -118,8 +122,43 @@ img, iframe {
     margin: 0;
 }
 
-.title {
+.journal-title {
     width: 300px;
+}
+
+.journal-item {
+    display: flex;
+    margin: calc(var(--pad) * 2);
+    box-shadow: 4px 4px var(--color1);
+    border: 1px var(--color1) solid;
+    border-radius: 10px;
+    margin: 20px var(--pad);
+    padding: 15px;
+}
+
+.journal-item img {
+    width: 200px;
+    border: 1px solid var(--color1);
+    border-radius: 5px;
+}
+
+.journal-item h4 {
+    margin-top: 5px;
+}
+
+article {
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-end;
+    margin-left: var(--pad);
+    padding: 0 var(--pad);
+}
+
+
+article p {
+    font-size: .8rem;
+    height: 100%;
+
 }
 
 input, select, button {
@@ -153,7 +192,7 @@ a {
 } 
 
 a:hover {
-    transition: 0.4s;
+    transition: 0.3s;
     color: var(--color3);
 }
 
@@ -174,7 +213,7 @@ select {
 input {
     height: calc(var(--pad) * 2.5);
     color: var(--color1);
-    background-color: #2d292c;
+    background-color: var(--color5);
     border: 1px solid white;
     margin: 0px var(--pad);
 }
@@ -184,7 +223,7 @@ input:focus {
     height: calc(var(--pad) * 2.5);
     outline: none;
     color: var(--color1);
-    background-color: #2d292c;
+    background-color: var(--color5);
     border-image: linear-gradient(40deg, hotpink, rgb(0, 207, 207) #4b84ff, #8F43E5) 1;
     border-style: solid;
     border-width: 1px;
@@ -194,23 +233,22 @@ input:focus {
 button {
     cursor: pointer;
     height: calc(var(--pad) * 2.5);
-    background: #2d292c;
+    background: var(--color5);
     font-family: var(--sans);
     font-weight: bolder;
     text-transform: uppercase;
     letter-spacing: .12rem;
     vertical-align: center;
     color: var(--color1);
-    border: 1px solid #2d292c;
+    border: 1px solid var(--color5);
     border-radius: 5px;
     padding: 0 calc(1.5 * var(--pad));
 
 }
 
 button:hover {
-    background: #2d292c;
+    background: var(--color5);
     transform: translate(1px, 1px);
-
 }
 
 button:active {
@@ -219,8 +257,15 @@ button:active {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     transform: translate(1px, 1px);
-
 }
+
+.journal-item:hover {
+    transition: 0.3s;
+    background: var(--color5);
+    transform: translate(1px, 1px);
+    box-shadow: 3px 3px var(--color1);
+}
+
 
 /* Start https://www.cursors-4u.com */ 
 /* * {

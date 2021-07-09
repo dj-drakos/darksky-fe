@@ -52,7 +52,7 @@ export default class CreateJournal extends Component {
 
                 <form className='journal-entry' onSubmit={this.handleSubmit}>
                     <label>
-                        <input className='title' placeholder="title" onChange={this.handleTitleInputChange} />
+                        <input className='journal-title' placeholder="title" onChange={this.handleTitleInputChange} />
                     </label>
                     <textarea placeholder="observe anything interesting?" onChange={this.handleTextChange} >
                     </textarea>
