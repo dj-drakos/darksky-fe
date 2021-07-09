@@ -97,7 +97,7 @@ export default class AboutUs extends Component {
                     <p>
                         <a href="https://api.le-systeme-solaire.net/">
                         Systeme Solaire API
-                        </a> was used to access data pertaining to astronomical bodies including name, type, gravity, data discovered.
+                        </a> was used to access data pertaining to astronomical bodies including name, type, gravity, date discovered.
                     </p>
                 </div>
 

@@ -10,14 +10,12 @@ export default class LocationPrompt extends React.Component {
 
     locationChange = e => {
         this.setState({ 
-            location: e.target.value, 
-            // url: `https://www.7timer.info/bin/astro.php?lon=${e.target.value.longitude}&lat=${e.target.value.latitude}&ac=0&lang=en&unit=british&output=internal&tzshift=0` 
+            location: e.target.value
         })
     }
     
     urlChange = e => {
-        this.setState({ 
-            // location: e.target.value, 
+        this.setState({  
             url: `https://www.7timer.info/bin/astro.php?lon=${this.state.location.longitude}&lat=${this.state.location.latitude}&ac=0&lang=en&unit=british&output=internal&tzshift=0` 
         })
     }
