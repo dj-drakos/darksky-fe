@@ -38,9 +38,7 @@ export default class App extends Component {
   }
 
   render() {
-
     return (
-
       <Router>
           { this.state.token ?  <LoggedInHeader logout={this.logout} /> : <Header /> }
           <Switch>

@@ -51,6 +51,7 @@ export async function fetchJournals (token) {
     const { body } = await request
         .get(`${backendURL}/api/journals`)
         .set('Authorization', token)
+
     return body;
 }
 
@@ -59,13 +60,15 @@ export async function addJournalEntry (entryData, token) {
         .post(`${backendURL}/api/journals`)
         .send(entryData)
         .set('Authorization', token)
+
     return body;
 }
 
 export async function fetchEntry (id, token) {
     const { body } = await request
         .get(`${backendURL}/api/journals/${id}`)
-        .set('Authorization', token);
+        .set('Authorization', token)
+
     return body;
 }
 
@@ -74,6 +77,7 @@ export async function updateEntry (id, data, token) {
         .put(`${backendURL}/api/journals/${id}`)
         .send(data)
         .set('Authorization', token)
+
     return body;
 }
 
@@ -81,5 +85,6 @@ export async function deleteEntry (id, token) {
     const { body } = await request
         .delete(`${backendURL}/api/journals/${id}`)
         .set('Authorization', token)
+        
     return body
 }

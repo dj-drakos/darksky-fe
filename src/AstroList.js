@@ -45,9 +45,9 @@ export default class AstroList extends Component {
     }
 
     render(){
-
         return (
             <div className='main'>
+
                 <h1>Dark Sky Objects</h1>
                 <div className="search-menu">
                     <label>
@@ -69,6 +69,7 @@ export default class AstroList extends Component {
                 <AstroDisplay token={this.props.token} display={this.state.bodies} history={this.props.history}/>
 
                 <div className='buttons'>
+
                     {this.state.pageNumber !== 1 && 
                     <button className='prev-button' onClick={this.handlePreviousPage}>
                         Prev Page
@@ -81,6 +82,7 @@ export default class AstroList extends Component {
                         Next Page 
                     </button>
                     }
+
                 </div>
                 
             </div>

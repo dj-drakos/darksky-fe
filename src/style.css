@@ -114,6 +114,11 @@ h4 {
     margin-top: 5px;
 }
 
+img, iframe {
+    border: 1px solid var(--color1);
+    border-radius: 5px;
+}
+
 input, select, button {
     margin: 10px 5px;
     padding: 0px 5px;
@@ -122,6 +127,7 @@ input, select, button {
 
 input {
     height: calc(var(--pad) * 2.5);
+    width: 200px;
     color: var(--color1);
     background-color: var(--color5);
     border: 1px solid white;
@@ -228,20 +234,33 @@ textarea:focus {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+}
+
+.flex-element {
     box-shadow: 3px 3px var(--color1);
     border: 1px var(--color1) solid;
     border-radius: 5px;
     margin: 30px;
     padding: 30px;
+    width: 475px;
 }
 
-.flex-element {
-    margin: 20px 10px;
-}
 
-.flex-element img, .flex-element iframe {
+.flex-element iframe, .flex-element img {
     max-width: 400px;
     margin: 20px 0;
+}
+
+.flex-element input, .journal-entry input {
+    margin: 0;
+}
+
+.flex-element h4 {
+    margin: 20px 0 5px 0;
+}
+
+.flex-element p {
+    font-size: .7rem;
 }
 
 .icon {
@@ -293,8 +312,6 @@ textarea:focus {
 
 .journal-detail img {
     width: 300px;
-    border: 1px solid var(--color1);
-    border-radius: 5px;
 }
 
 .journal-detail h2 {
@@ -317,10 +334,6 @@ textarea:focus {
     display: flex;
     flex-direction: column;
     justify-content:flex-start;
-}
-
-.journal-entry input {
-    margin: 0;
 }
 
 .journal-entry textarea {
@@ -355,8 +368,6 @@ textarea:focus {
 
 .journal-item img {
     width: 200px;
-    border: 1px solid var(--color1);
-    border-radius: 5px;
 }
 
 .journal-item:hover {
@@ -385,6 +396,26 @@ textarea:focus {
     display: flex;
     justify-content: space-around;
     align-items: center;
+}
+
+.weather-key {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.weather-key img {
+    height: 15px;
+    margin: 0 5px;
+    border: none;
+    border-radius: 2px;
+}
+
+.weather-key p {
+    display: flex;
+    align-content: center;
+    font-size: .8rem;
+    margin: .15rem;
 }
 
 .wish-item {
