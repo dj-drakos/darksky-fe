@@ -23,7 +23,7 @@ export default class AboutUs extends Component {
                 </div>
 
                 <div className='bio-item'>
-                    <img className="bio-pic" src="https://media-exp1.licdn.com/dms/image/C5603AQHj3Ur5UOz9IQ/profile-displayphoto-shrink_400_400/0/1625847270208?e=1631145600&v=beta&t=8a_jgN-fYS906YzL7NmVWyFUOXBY0cyeFfFTo8wpMRQ" alt="Kubisiak" />
+                    <img className="bio-pic" src="kubiphoto.jpg" alt="Kubisiak" />
                     <article>
                         <h2>.Kubisiak
                             <a target="_blank" rel='noreferrer' href="https://www.linkedin.com/in/kubisiak/"><img className='icon' src='./linkedin.png' alt='LinkedIn' /></a>
