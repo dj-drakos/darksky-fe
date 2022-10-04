@@ -1,13 +1,7 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-
-export default class Footer extends Component {
-    render() {
+export default function Footer() {
         return (
             <div className="footer">
-                <Link to="/about-us">About Us</Link>
-                <p><span className='moon'>☾</span> 2021 AstroLocus</p>
+                <p><span className='moon'>☾</span></p>
             </div>
         )
-    }
 }

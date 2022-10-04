@@ -6,7 +6,7 @@ export default class Header extends Component {
     render() {
         return (
             <div className="header">
-                <NavLink to="/main">AstroLocus</NavLink>
+                <NavLink to="/main">Home</NavLink>
                 <NavLink to="/signup">Sign Up</NavLink>
             </div>
         )

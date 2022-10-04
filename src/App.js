@@ -7,7 +7,6 @@ import {
   Switch,
   Redirect
 } from 'react-router-dom';
-import AboutUs from './AboutUs';
 import AstroList from './AstroList';
 import CreateJournal from './CreateJournal';
 import Footer from './Footer';
@@ -87,8 +86,6 @@ export default class App extends Component {
               this.state.token ? 
               <Wishlist token={this.state.token} {...routerProps} /> : <Redirect to="/" />
           } />
-
-            <Route exact path='/about-us' component={AboutUs}/>
           </Switch>
           <Footer />
       </Router>
