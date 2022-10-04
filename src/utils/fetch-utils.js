@@ -4,13 +4,21 @@ const backendURL = process.env.REACT_APP_BACKEND_URL
 const apodURL = process.env.REACT_APP_APOD_URL
 
 export async function signUp (email, password) {
-    const data = await request
-        .post(`${backendURL}/auth/signup`)
-        .send({
-            email: email,
-            password: password,
-        })
-    return data.body.token;
+    try {
+        const {body} = await request
+            .post(`${backendURL}/auth/signup`)
+            .send({
+                email: email,
+                password: password,
+            })
+            console.log(body)
+        if (body.error) {
+            throw new Error(`${body.error.message} Status: ${body.error.status}`)
+        }
+        return body.token;
+    } catch (error) {
+        console.error(`Error: ${error.message}`)
+    }
 }
 
 export async function login (email, password) {
