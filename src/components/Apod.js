@@ -13,7 +13,7 @@ export default class Apod extends Component {
     apod = async () => {
         const apodRes = await getApodAPI();
         this.setState({ 
-            description: apodRes.description,
+            description: apodRes.explanation,
             media_type: apodRes.media_type, 
             title: apodRes.title,
             url: apodRes.url })

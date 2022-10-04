@@ -46,7 +46,6 @@ export async function getLocationAPI (city) {
 export async function getApodAPI () {
     const { body } = await request 
         .get(apodURL)
-
     return body;
 }
 

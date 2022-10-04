@@ -20,6 +20,7 @@ import '../styles/App.css';
 import '../styles/style.css';
 
 const TOKEN = 'TOKEN';
+
 export default class App extends Component {
 
   state = {
