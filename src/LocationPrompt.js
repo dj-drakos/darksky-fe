@@ -2,6 +2,7 @@ import React from 'react'
 import { getLocationAPI } from './api-utils.js'
 import { setLocation, getLocation } from './LocalStorage'
 
+const sevenTimerURL = process.env.REACT_APP_7TIMER_URL
 export default class LocationPrompt extends React.Component {
     state = {
         location: '',
@@ -16,7 +17,7 @@ export default class LocationPrompt extends React.Component {
     
     urlChange = e => {
         this.setState({  
-            url: `https://www.7timer.info/bin/astro.php?lon=${this.state.location.longitude}&lat=${this.state.location.latitude}&ac=0&lang=en&unit=british&output=internal&tzshift=0` 
+            url: `${sevenTimerURL}?lon=${this.state.location.longitude}&lat=${this.state.location.latitude}&ac=0&lang=en&unit=british&output=internal&tzshift=0` 
         })
     }
     
@@ -38,7 +39,7 @@ export default class LocationPrompt extends React.Component {
                         </label>
                         <button>Set</button><br/>
                     </div>
-                    <img src={`https://www.7timer.info/bin/astro.php?lon=${location.longitude}&lat=${location.latitude}&ac=0&lang=en&unit=british&output=internal&tzshift=0`} alt='viewing conditions' />
+                    <img src={`${sevenTimerURL}?lon=${location.longitude}&lat=${location.latitude}&ac=0&lang=en&unit=british&output=internal&tzshift=0`} alt='viewing conditions' />
                 </form>
                 <div className='weather-key'>
                     <h4>Key:</h4>

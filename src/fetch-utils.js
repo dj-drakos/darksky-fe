@@ -1,7 +1,7 @@
 import request from 'superagent';
 
-const backendURL = 'https://guarded-thicket-69575.herokuapp.com';
-const apodURL = 'https://apodapi.herokuapp.com/api';
+const backendURL = process.env.REACT_APP_BACKEND_URL
+const apodURL = process.env.REACT_APP_APOD_URL
 
 export async function signUp (email, password) {
     const data = await request

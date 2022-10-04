@@ -31,7 +31,7 @@ export default class LandingPage extends Component {
                 <h1>🌝</h1>
                 <div className='login'>
                     <p >
-                    🔭
+                    🔭 Dark Sky Observer App
                     </p>
                     <form onSubmit={this.handleSubmit}>
                         <label>
