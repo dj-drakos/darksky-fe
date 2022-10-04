@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { signUp } from "./fetch-utils.js";
+import { signUp } from "../utils/fetch-utils";
 
 
 export default class SignUp extends Component {

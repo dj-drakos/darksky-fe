@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { getName } from './LocalStorage';
-import { addJournalEntry } from './fetch-utils.js';
+import { getName } from '../utils/local-storage-utils';
+import { addJournalEntry } from '../utils/fetch-utils';
 
 export default class CreateJournal extends Component {
     createDate = () => {

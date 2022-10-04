@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { getSolarSystemAPI } from './api-utils.js';
-import AstroDisplay from './AstroDisplay.js';
+import { getSolarSystemAPI } from '../utils/api-utils';
+import AstroDisplay from './AstroDisplay';
 
 export default class AstroList extends Component {
 

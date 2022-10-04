@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import './App.css';
-import './style.css';
 import {
   BrowserRouter as Router,
   Route,
@@ -10,7 +8,7 @@ import {
 import AstroList from './AstroList';
 import CreateJournal from './CreateJournal';
 import Footer from './Footer';
-import Header from './Header.js';
+import Header from './Header';
 import JournalDetail from './JournalDetail';
 import Journal from './Journal';
 import LandingPage from './LandingPage';
@@ -18,6 +16,8 @@ import LoggedInHeader from './LoggedInHeader';
 import Main from './Main';
 import SignUp from './SignUp';
 import Wishlist from './Wishlist';
+import '../styles/App.css';
+import '../styles/style.css';
 
 const TOKEN = 'TOKEN';
 export default class App extends Component {

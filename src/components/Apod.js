@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { getApodAPI } from './api-utils.js'
+import { getApodAPI } from '../utils/api-utils.js'
 
 
 

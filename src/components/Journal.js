@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import JournalList from './JournalList';
-import { fetchJournals } from './fetch-utils';
+import { fetchJournals } from '../utils/fetch-utils';
 
 export default class Journal extends Component {
 

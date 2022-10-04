@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { addToWishlist, getWishlist } from './fetch-utils.js';
-import { setName } from './LocalStorage.js';
+import { addToWishlist, getWishlist } from '../utils/fetch-utils.js';
+import { setName } from '../utils/local-storage-utils.js';
 
 export default class AstroDisplay extends Component {
     state = {

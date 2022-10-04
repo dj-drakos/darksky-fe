@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { login } from './fetch-utils.js';
+import { login } from '../utils/fetch-utils';
 
 export default class LandingPage extends Component {
 

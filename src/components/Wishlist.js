@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { getWishlist } from './fetch-utils.js';
-import { setName } from './LocalStorage.js';
+import { getWishlist } from '../utils/fetch-utils';
+import { setName } from '../utils/local-storage-utils';
 
 export default class Wishlist extends Component {
 

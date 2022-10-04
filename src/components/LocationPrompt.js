@@ -1,6 +1,6 @@
 import React from 'react'
-import { getLocationAPI } from './api-utils.js'
-import { setLocation, getLocation } from './LocalStorage'
+import { getLocationAPI } from '../utils/api-utils'
+import { setLocation, getLocation } from '../utils/local-storage-utils'
 
 const sevenTimerURL = process.env.REACT_APP_7TIMER_URL
 export default class LocationPrompt extends React.Component {

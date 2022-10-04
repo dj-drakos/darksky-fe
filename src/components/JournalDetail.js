@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { fetchEntry, updateEntry, deleteEntry } from './fetch-utils.js';
+import { fetchEntry, updateEntry, deleteEntry } from '../utils/fetch-utils';
 export default class JournalDetail extends Component {
 
     state = {
