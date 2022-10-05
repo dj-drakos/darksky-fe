@@ -1,48 +1,47 @@
-import React, { Component } from 'react'
-import { signUp } from "../utils/fetch-utils";
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { signUp } from "../utils/fetch-utils"
 
 
-export default class SignUp extends Component {
+export default function SignUp({login}) {
+    const [{emailInput, passwordInput}, setState] = useState({
+        emailInput: '',
+        passwordInput: '',
+    })
 
-    state = {
-        email: '',
-        password: '',
-    }
+    const navigate = useNavigate()
 
-    handleSubmit = async (e) => {
-        e.preventDefault();
-        const token = await signUp(this.state.email, this.state.password);
-        this.props.login(token);
-        this.props.history.push('/main');
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        const token = await signUp(emailInput, passwordInput)
+        login(token)
+        navigate('../main')
     } 
 
-    handleEmailChange = async (e) => {
-        this.setState({ email: e.target.value })
+    const handleChange = (e) => {
+        setState((state) => ({
+            ...state,
+            [e.target.name]: e.target.value 
+        }))
     }
 
-    handlePasswordChange = async (e) => {
-        this.setState({ password: e.target.value })
-    }
-
-    render() {
-        return (
-            <div  className='main'>
-                <h1>Sign Up</h1>
-                <div className='login'>
-                    <p >
-                    🪐 Create a free account to access search tools, local weather conditions, and a journal to keep track of your Dark Sky adventures. 
-                    </p>
-                    <form onSubmit={this.handleSubmit}>
-                        <label>
-                            <input type="email" placeholder="email" onChange={this.handleEmailChange} />
-                        </label>
-                        <label>
-                            <input type="password" placeholder="password" onChange={this.handlePasswordChange} />
-                        </label>
-                        <button>Sign Up</button>
-                    </form>
-                </div>
+    return (
+        <div  className='main'>
+            <h1>Sign Up</h1>
+            <div className='login'>
+                <p >
+                🪐 Create a free account to access search tools, local weather conditions, and a journal to keep track of your Dark Sky adventures. 
+                </p>
+                <form onSubmit={handleSubmit}>
+                    <label>
+                        <input type="email" placeholder="email" name="emailInput" value={emailInput} onChange={handleChange} />
+                    </label>
+                    <label>
+                        <input type="password" placeholder="password" name="passwordInput" value={passwordInput} onChange={handleChange} />
+                    </label>
+                    <button>Sign Up</button>
+                </form>
             </div>
-        )
-    }
+        </div>
+    )
 }
