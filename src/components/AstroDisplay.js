@@ -1,90 +1,63 @@
-import React, { Component } from 'react'
+import React, { useEffect, useState } from 'react'
 import { getSolarSystemAPI } from '../utils/api-utils';
 import AstroList from './AstroList';
 
-export default class AstroDisplay extends Component {
-
-    state = {
+export default function AstroDisplay({token}) {
+    const [{bodies, search, pageNumber, filter}, setState] = useState({
         bodies: [],
-        search: '',
+        filter: 'all',
         pageNumber: 1,
-        filter: 'all'
+        search: '',
+    }) 
+
+    useEffect(() => {
+        getSolarSystemAPI(pageNumber, filter, search)
+            .then((res) => setState((state) => ({ ...state, bodies: res })))
+    }, [filter, pageNumber, search])
+
+    const handleCategorySelection = (e) => {
+        setState((state) => ({ ...state, filter: e.target.value, pageNumber: 1 }))
     }
 
-    componentDidMount = async () => {
-        const solarSystemAPI = await getSolarSystemAPI(this.state.pageNumber, this.state.filter, this.state.search);
-        this.setState({ bodies: solarSystemAPI });
+    const handlePageChange = (num) => {
+        setState((state) => ({ ...state, pageNumber: pageNumber + num }));
     }
 
-    handleCategorySelection = async (e) => {
-        await this.setState({ filter: e.target.value, pageNumber: 1})
-        const solarSystemAPI = await getSolarSystemAPI(this.state.pageNumber, this.state.filter, this.state.search);
-        this.setState({ bodies: solarSystemAPI });
+    const handleChange = (e) => {
+        setState((state) => ({ ...state, search: e.target.value}))
     }
 
-    handleNextPage = async (e) => {
-        await this.setState({pageNumber: this.state.pageNumber + 1});
-        const solarSystemAPI = await getSolarSystemAPI(this.state.pageNumber, this.state.filter, this.state.search);
-        this.setState({ bodies: solarSystemAPI });
-    }
-
-    handlePreviousPage = async (e) => {
-        await this.setState({pageNumber: this.state.pageNumber - 1});
-        const solarSystemAPI = await getSolarSystemAPI(this.state.pageNumber, this.state.filter, this.state.search);
-        this.setState({ bodies: solarSystemAPI });
-    }
-
-    handleSearchChange = (e) => {
-        this.setState({ search: e.target.value });
-    }
-
-    handleClick = async () => {
-        const solarSystemAPI = await getSolarSystemAPI(this.state.pageNumber, this.state.filter, this.state.search);
-        this.setState({ bodies: solarSystemAPI })
-    }
-
-    render(){
-        return (
-            <div className='main'>
-
-                <h1>Dark Sky Objects</h1>
-                <div className="search-menu">
-                    <label>
-                        Filter by Category:
-                        <select onChange={this.handleCategorySelection}>
-                            <option value="all">Select Type</option>
-                            <option value="planets">Planets</option>
-                            <option value="moons">Moons</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </label>
-                    <div>
-                        <input placeholder= "Object Name" onChange={this.handleSearchChange}>
-                        </input>
-                        <button onClick={this.handleClick}>Search</button>
-                    </div>
+    return (
+        <div className='main'>
+            <h1>Dark Sky Objects</h1>
+            <div className="search-menu">
+                <label>
+                    Filter by Category:
+                    <select onChange={handleCategorySelection}>
+                        <option value="all">Select Type</option>
+                        <option value="planets">Planets</option>
+                        <option value="moons">Moons</option>
+                        <option value="other">Other</option>
+                    </select>
+                </label>
+                <div>
+                    <label>Search:</label>
+                    <input placeholder="Object Name" value={search} onChange={handleChange}/>
                 </div>
-
-                <AstroList token={this.props.token} list={this.state.bodies} />
-
-                <div className='buttons'>
-
-                    {this.state.pageNumber !== 1 && 
-                    <button className='prev-button' onClick={this.handlePreviousPage}>
-                        Prev Page
-                    </button>
-                    }
-
-                    {
-                    this.state.bodies.length === 20 &&
-                    <button className='next-button' onClick={this.handleNextPage}>
-                        Next Page 
-                    </button>
-                    }
-
-                </div>
-                
             </div>
-        )
-    }
+
+            <AstroList token={token} list={bodies} />
+            <div className='buttons'>
+                {pageNumber > 1 && 
+                <button className='prev-button' onClick={() => handlePageChange(-1)}>
+                    Prev Page
+                </button>}
+
+                {bodies.length === 20 &&
+                <button className='next-button' onClick={() => handlePageChange(1)}>
+                    Next Page 
+                </button>}
+            </div>
+        </div>
+    )
 }
