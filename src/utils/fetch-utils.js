@@ -5,7 +5,7 @@ const apodURL = process.env.REACT_APP_APOD_URL
 
 export async function signUp (email, password) {
     try {
-        const {body} = await request
+        const { body } = await request
             .post(`${backendURL}/auth/signup`)
             .send({
                 email: email,
@@ -21,77 +21,108 @@ export async function signUp (email, password) {
 }
 
 export async function login (email, password) {
-    const data = await request
-        .post(`${backendURL}/auth/signin`)
-        .send({
-            email: email,
-            password: password,
-        })
-    return data.body.token;
+    try {
+        const { body } = await request
+            .post(`${backendURL}/auth/signin`)
+            .send({
+                email: email,
+                password: password,
+            })
+        return body.token;
+    } catch (error) {
+        console.error(`Error: ${error.message}`)
+    }
 }
 
 export async function getApodAPI () {
-    const { body } = await request 
+    try {
+        const { body } = await request 
         .get(apodURL)
-
-    return body;
+        return body;
+    } catch (error) {
+        console.error(`Error: ${error.message}`)
+    }
 }
 
 export async function addToWishlist (listItem, token) {
-    const data = await request
-    .post(`${backendURL}/api/wishlist`)
-    .set('Authorization', token)
-    .send(listItem);
+    try {
+        const { body } = await request
+            .post(`${backendURL}/api/wishlist`)
+            .set('Authorization', token)
+            .send(listItem);
     
-    return data.body;
+        return body;
+    } catch (error) {
+        console.error(`Error: ${error.message}`)
+    }
 }
 
 export async function getWishlist (token) {
-    const { body } = await request
-    .get(`${backendURL}/api/wishlist`)
-    .set('Authorization', token)
-    const mungedData = body.map((item) => item.englishname)
-    return mungedData;
+    try {
+        const { body } = await request
+            .get(`${backendURL}/api/wishlist`)
+            .set('Authorization', token)
+        const mungedData = body.map((item) => item.englishname)
+        return mungedData;
+    } catch (error) {
+        console.error(`Error: ${error.message}`)
+    }
 }
 
 export async function fetchJournals (token) {
-    const { body } = await request
-        .get(`${backendURL}/api/journals`)
-        .set('Authorization', token)
-
-    return body;
+    try {
+        const { body } = await request
+            .get(`${backendURL}/api/journals`)
+            .set('Authorization', token)
+        return body;
+    } catch (error) {
+        console.error(`Error: ${error.message}`)
+    }
 }
 
 export async function addJournalEntry (entryData, token) {
-    const { body } = await request
-        .post(`${backendURL}/api/journals`)
-        .send(entryData)
-        .set('Authorization', token)
-
-    return body;
+    try {
+        const { body } = await request
+            .post(`${backendURL}/api/journals`)
+            .send(entryData)
+            .set('Authorization', token)
+        return body;
+    } catch (error) {
+        console.error(`Error: ${error.message}`)
+    }
 }
 
 export async function fetchEntry (id, token) {
-    const { body } = await request
-        .get(`${backendURL}/api/journals/${id}`)
-        .set('Authorization', token)
-    //TODO: remove array index after fixing backend route
-    return body[0];
+    try {
+        const { body } = await request
+            .get(`${backendURL}/api/journals/${id}`)
+            .set('Authorization', token)
+        //TODO: remove array index after fixing backend route
+        return body[0];
+    } catch (error) {
+        console.error(`Error: ${error.message}`)
+    }
 }
 
 export async function updateEntry (id, data, token) {
-    const { body } = await request
-        .put(`${backendURL}/api/journals/${id}`)
-        .send(data)
-        .set('Authorization', token)
-
-    return body;
+    try {
+        const { body } = await request
+            .put(`${backendURL}/api/journals/${id}`)
+            .send(data)
+            .set('Authorization', token)
+        return body;
+    } catch (error) {
+        console.error(`Error: ${error.message}`)
+    }
 }
 
 export async function deleteEntry (id, token) {
-    const { body } = await request
-        .delete(`${backendURL}/api/journals/${id}`)
-        .set('Authorization', token)
-        
-    return body
+    try {
+        const { body } = await request
+            .delete(`${backendURL}/api/journals/${id}`)
+            .set('Authorization', token)
+        return body
+    } catch (error) {
+        console.error(`Error: ${error.message}`)
+    }
 }
