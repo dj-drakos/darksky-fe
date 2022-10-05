@@ -1,29 +1,25 @@
-import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-export default class JournalCard extends Component {
+export default function JournalCard({journal}) {
+    const {date, englishname, id, image_url, journal_entry} = journal
 
-    render() {
-        return (
-                <Link className="journal-item" to={`/journal/${this.props.item.id}`}>
+    return (
+        <Link className="journal-item" to={`/journal/${id}`}>
+            <div>
+                <img alt="journal pic" src={image_url} />
+                <h4>
+                    {date}
+                </h4>
+            </div>
 
-                    <div>
-                        <img alt="journal pic" src={this.props.item.image_url} />
-                        <h4>
-                            {this.props.item.date}
-                        </h4>
-                    </div>
-
-                    <article>
-                        <h2>
-                            {this.props.item.englishname}
-                        </h2>
-                        <p>
-                            {this.props.item.journal_entry}
-                        </p>
-                    </article>
-                    
-                </Link>
-        )
-    }
+            <article>
+                <h2>
+                    {englishname}
+                </h2>
+                <p>
+                    {journal_entry}
+                </p>
+            </article>
+        </Link>
+    )
 }

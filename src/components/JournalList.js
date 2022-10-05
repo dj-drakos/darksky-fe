@@ -1,27 +1,21 @@
-import React, { Component } from 'react';
+import { useEffect, useState } from 'react';
 import JournalCard from './JournalCard';
 import { fetchJournals } from '../utils/fetch-utils';
 
-export default class Journal extends Component {
+export default function Journal({token}) {
+    const [journals, setJournals] = useState([])
 
+    useEffect(() => {
+        fetchJournals(token)
+            .then((res) => setJournals(res))
+    }, [token])
 
-    state = {
-        journals: [],
-    }
-
-    componentDidMount = async () => {
-        const journals = await fetchJournals(this.props.token);
-        this.setState({ journals: journals })
-    }
-
-    render() {
-        return (
-            <div className="main">
-                <h1>Journals</h1>
-                <main>
-                    {this.state.journals.map(item => <JournalCard key={item.id} item={item} />)}
-                </main>
-            </div>
-        )
-    }
+    return (
+        <div className="main">
+            <h1>Journals</h1>
+            <main>
+                {journals.map(journal => <JournalCard key={journal.id} journal={journal} />)}
+            </main>
+        </div>
+    )
 }
