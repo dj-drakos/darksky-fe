@@ -15,7 +15,7 @@ export default function SignUp({setToken}) {
         e.preventDefault()
         const token = await signUp(emailInput, passwordInput)
         setToken(token)
-        navigate('../main')
+        navigate('../')
     } 
 
     const handleChange = (e) => {

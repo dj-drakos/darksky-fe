@@ -11,7 +11,6 @@ export async function signUp (email, password) {
                 email: email,
                 password: password,
             })
-            console.log(body)
         if (body.error) {
             throw new Error(`${body.error.message} Status: ${body.error.status}`)
         }

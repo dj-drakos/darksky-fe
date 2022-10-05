@@ -33,7 +33,6 @@ export function getName() {
     if (!rawName)
         return ('Astro-Body');
     const name = JSON.parse(rawName);
-    console.log(name)
     return name;
 }
 
