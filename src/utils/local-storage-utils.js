@@ -16,16 +16,14 @@ export function setLocalStorageLocation(location) {
 }
 
 export function getLocalStorageToken() {
-    const rawToken = localStorage.getItem(TOKEN);
-    if (!rawToken)
+    const token = localStorage.getItem(TOKEN);
+    if (!token)
         return;
-    const token = JSON.parse(rawToken);
     return token;
 }
 
 export function setLocalStorageToken(token) {
-    const tokenString = JSON.stringify(token);
-    localStorage.setItem(TOKEN, tokenString)
+    localStorage.setItem(TOKEN, token)
 }
 
 export function removeLocalStorageToken() {
