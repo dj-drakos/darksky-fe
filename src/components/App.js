@@ -29,12 +29,12 @@ export default class App extends Component {
     token: localStorage.getItem(TOKEN)
   }
 
-  login = (token) => {
+  setToken = (token) => {
     this.setState({ token: token })
     localStorage.setItem(TOKEN, token)
   }
 
-  logout = () => {
+  clearToken = () => {
     this.setState({ token: '' })
     localStorage.setItem(TOKEN, '')
   }
@@ -42,11 +42,11 @@ export default class App extends Component {
   render() {
     return (
       <Router>
-          { this.state.token ?  <LoggedInHeader logout={this.logout} /> : <Header /> }
+          { this.state.token ?  <LoggedInHeader clearToken={this.clearToken} /> : <Header /> }
           <Routes>
-            <Route path='/' element={<SignIn login={this.login} />} />
+            <Route path='/' element={<SignIn setToken={this.setToken} />} />
 
-            <Route path='/signup' element={<SignUp login={this.login} />} />
+            <Route path='/signup' element={<SignUp setToken={this.setToken} />} />
 
             <Route path="/main" element={
               <RequireAuth token={this.state.token} redirectTo="/">

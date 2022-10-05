@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { signUp } from "../utils/fetch-utils"
 
 
-export default function SignUp({login}) {
+export default function SignUp({setToken}) {
     const [{emailInput, passwordInput}, setState] = useState({
         emailInput: '',
         passwordInput: '',
@@ -14,7 +14,7 @@ export default function SignUp({login}) {
     const handleSubmit = async (e) => {
         e.preventDefault()
         const token = await signUp(emailInput, passwordInput)
-        login(token)
+        setToken(token)
         navigate('../main')
     } 
 

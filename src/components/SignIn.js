@@ -1,50 +1,49 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import { login } from '../utils/fetch-utils';
 
-export default class SignIn extends Component {
+export default function SignIn({setToken}) {
 
-    state = {
-        email: '',
-        password: '',
-    }
+    const [{emailInput, passwordInput}, setState] = useState({
+        emailInput: '',
+        passwordInput: '',
+    })
 
-    handleSubmit = async (e) => {
-        e.preventDefault();
-        const token = await login(this.state.email, this.state.password);
-        this.props.login(token);
-        this.props.history.push('/main');
+    const navigate = useNavigate()
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        const token = await login(emailInput, passwordInput)
+        setToken(token)
+        navigate('../main')
     } 
 
-    handleEmailChange = async (e) => {
-        this.setState({ email: e.target.value })
+    const handleChange = (e) => {
+        setState((state) => ({
+            ...state,
+            [e.target.name]: e.target.value 
+        }))
     }
 
-    handlePasswordChange = async (e) => {
-        this.setState({ password: e.target.value })
-    }
+    return (
+        <div  className='main'>
 
-    render() {
-
-        return (
-            <div  className='main'>
-
-                <h1>🌝</h1>
-                <div className='login'>
-                    <p >
-                    🔭 Dark Sky Observer App
-                    </p>
-                    <form onSubmit={this.handleSubmit}>
-                        <label>
-                            <input type="email" placeholder="email" onChange={this.handleEmailChange} />
-                        </label>
-                        <label>
-                            <input type="password" placeholder="password" onChange={this.handlePasswordChange} />
-                        </label>
-                        <button>Log In</button>
-                    </form>
-                </div>
-
+            <h1>🌝</h1>
+            <div className='login'>
+                <p >
+                🔭 Dark Sky Observer App
+                </p>
+                <form onSubmit={handleSubmit}>
+                    <label>
+                        <input type="email" placeholder="email" name="emailInput" value={emailInput} onChange={handleChange} />
+                    </label>
+                    <label>
+                        <input type="password" placeholder="password" name="passwordInput" value={passwordInput} onChange={handleChange} />
+                    </label>
+                    <button>Log In</button>
+                </form>
             </div>
-        )
-    }
+
+        </div>
+    )
 }
