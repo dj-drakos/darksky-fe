@@ -6,7 +6,6 @@ export default class AstroList extends Component {
 
     state = {
         bodies: [],
-        wishlist: [],
         search: '',
         pageNumber: 1,
         filter: 'all'
@@ -66,7 +65,7 @@ export default class AstroList extends Component {
                     </div>
                 </div>
 
-                <AstroDisplay token={this.props.token} display={this.state.bodies} history={this.props.history}/>
+                <AstroDisplay token={this.props.token} display={this.state.bodies} />
 
                 <div className='buttons'>
 
