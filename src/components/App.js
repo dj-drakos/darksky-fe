@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   BrowserRouter as Router,
   Route,
@@ -23,69 +23,62 @@ import '../styles/style.css';
 
 const TOKEN = 'TOKEN';
 
-export default class App extends Component {
+export default function App() {
+  const [stateToken, setStateToken] = useState(localStorage.getItem(TOKEN))
 
-  state = {
-    token: localStorage.getItem(TOKEN)
-  }
-
-  setToken = (token) => {
-    this.setState({ token: token })
+  const setLocalStorageToken = token => {
     localStorage.setItem(TOKEN, token)
+    setStateToken(token)
   }
 
-  clearToken = () => {
-    this.setState({ token: '' })
-    localStorage.setItem(TOKEN, '')
+  const clearLocalStorageToken = () => {
+    localStorage.removeItem(TOKEN)
+    setStateToken(null)
   }
 
-  render() {
     return (
       <Router>
-          { this.state.token ?  <LoggedInHeader clearToken={this.clearToken} /> : <Header /> }
+          { stateToken ? <LoggedInHeader clearToken={clearLocalStorageToken} /> : <Header /> }
           <Routes>
-            <Route path='/' element={<SignIn setToken={this.setToken} />} />
-
-            <Route path='/signup' element={<SignUp setToken={this.setToken} />} />
-
-            <Route path="/main" element={
-              <RequireAuth token={this.state.token} redirectTo="/">
+            <Route path='/signin' element={<SignIn setToken={setLocalStorageToken} />} />
+            <Route path='/signup' element={<SignUp setToken={setLocalStorageToken} />} />
+            <Route path="/" element={
+              <RequireAuth token={stateToken} redirectTo="/signin">
                 <Dashboard />
               </RequireAuth>
             } />
 
             <Route path="/astro" element={
-              <RequireAuth token={this.state.token} redirectTo="/">
-                <AstroDisplay token={this.state.token}/>
+              <RequireAuth token={stateToken} redirectTo="/signin">
+                <AstroDisplay token={stateToken}/>
               </RequireAuth>
             } />
 
             <Route path="/journal" element={
-              <RequireAuth token={this.state.token} redirectTo="/">
-                <Journal token={this.state.token}/>
+              <RequireAuth token={stateToken} redirectTo="/signin">
+                <Journal token={stateToken}/>
               </RequireAuth>
             } />
 
             <Route path="/create" element={
-              <RequireAuth token={this.state.token} redirectTo="/">
-                <CreateJournal token={this.state.token}  />
+              <RequireAuth token={stateToken} redirectTo="/signin">
+                <CreateJournal token={stateToken}  />
               </RequireAuth>
             } />
             
             <Route path="/journal/:id" element={
-              <RequireAuth token={this.state.token} redirectTo="/">
-                <JournalDetail token={this.state.token} />
+              <RequireAuth token={stateToken} redirectTo="/signin">
+                <JournalDetail token={stateToken} />
               </RequireAuth>
             } />
 
             <Route path="/wishlist" element={
-              <RequireAuth token={this.state.token} redirectTo="/">
-                <Wishlist token={this.state.token}/>
+              <RequireAuth token={stateToken} redirectTo="/signin">
+                <Wishlist token={stateToken}/>
               </RequireAuth>
             } />
           </Routes>
         <Footer />
       </Router>
     )
-  }
 }
