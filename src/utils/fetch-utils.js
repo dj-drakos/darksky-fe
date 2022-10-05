@@ -48,11 +48,11 @@ export async function addToWishlist (listItem, token) {
 }
 
 export async function getWishlist (token) {
-    const data = await request
+    const { body } = await request
     .get(`${backendURL}/api/wishlist`)
     .set('Authorization', token)
-
-    return data.body;
+    const mungedData = body.map((item) => item.englishname)
+    return mungedData;
 }
 
 export async function fetchJournals (token) {
