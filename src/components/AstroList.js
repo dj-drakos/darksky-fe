@@ -13,7 +13,7 @@ export default function AstroList({token, list}) {
             setWishlist(res)
         })
         .catch((error) => console.error(error))
-    }, [])
+    }, [token])
     
     const handleCreateJournal = (name) => {
         setName(name);

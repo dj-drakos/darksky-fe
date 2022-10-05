@@ -11,9 +11,10 @@ export default function Wishlist({token}) {
     useEffect(() => {
         getWishlist(token)
             .then(res => setWishlist(res))
-    }, [])
+            .catch(error => console.log(error))
+    }, [token])
 
-    const handleCreateJournal = (name) => {
+    const handleCreateJournal = name => {
         setName(name);
         navigate('../create');
     }
