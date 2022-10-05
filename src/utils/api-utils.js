@@ -5,34 +5,19 @@ const systemeSolaireURL = process.env.REACT_APP_SYSTEME_SOLAIRE_URL
 const locationURL = process.env.REACT_APP_LOCATION_URL
 const locationKey = process.env.REACT_APP_LOCATION_KEY
 
-export async function getSolarSystemAPI (pageNumber, filter, search) {
+export async function getSolarSystemAPI (pageNumber, bodyType, search) {
     try {
-        let searchResult = [];
-        if(filter === 'all') {
-            const solarSystemURL = `${systemeSolaireURL}/bodies?order=englishName,asc&page=${pageNumber},20&filter[]=englishName,sw,${search}`;
-            const { body } = await request 
-                .get(solarSystemURL)
-            searchResult = [...body.bodies]
+        let URL;
+        if(bodyType === 'all') {
+            URL = `${systemeSolaireURL}?order=englishName,asc&page=${pageNumber},20&filter[]=englishName,cs,${search}`;
         } 
-        if(filter === 'planets'){
-            const planetsURL = `${systemeSolaireURL}/bodies?order=englishName,asc&page=${pageNumber},20&filter[]=isPlanet,neq,&filter[]=englishName,sw,${search}`;
-            const { body } = await request 
-                .get(planetsURL)
-            searchResult = [...body.bodies]
+        else {
+            URL = `${systemeSolaireURL}?order=englishName,asc&page=1,20&filter[]=bodyType,eq,${bodyType}&filter[]=englishName,cs,${search}`;
         }
-        if(filter === 'moons') {
-            const moonsURL = `${systemeSolaireURL}/bodies?order=englishName,asc&page=${pageNumber},20&filter[]=aroundPlanet,neq,&filter[]=englishName,sw,${search}`;
-            const { body } = await request 
-                .get(moonsURL)
-            searchResult = [...body.bodies]
-        }
-        if(filter === 'other') {
-            const othersURL = `${systemeSolaireURL}/bodies?order=englishName,asc&page=${pageNumber},20&filter[]=isPlanet,eq,&filter[]=aroundPlanet,eq,&filter[]=id,sw,${search}`;
-            const { body } = await request 
-                .get(othersURL)
-            searchResult = [...body.bodies]
-        }
-        return searchResult.map(item => { return {
+        const { body } = await request 
+            .get(URL)
+
+        return body.bodies.map(item => ({
             id: item.id,
             name: item.englishName ?? item.id,
             bodyType: item.bodyType,
@@ -41,8 +26,8 @@ export async function getSolarSystemAPI (pageNumber, filter, search) {
             radius: item.meanRadius,
             moons: item.moons,
             aroundPlanet: item.aroundPlanet
-            }
-        })
+            })
+        )
     } catch (error) {
         console.error(`Error: ${error.message}`)  
     }

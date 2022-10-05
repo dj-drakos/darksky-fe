@@ -35,9 +35,12 @@ export default function AstroDisplay({token}) {
                     Filter by Category:
                     <select onChange={handleCategorySelection}>
                         <option value="all">Select Type</option>
-                        <option value="planets">Planets</option>
-                        <option value="moons">Moons</option>
-                        <option value="other">Other</option>
+                        <option value="planet">Planets</option>
+                        <option value="dwarf%20planet">Dwarf Planets</option>
+                        <option value="moon">Moons</option>
+                        <option value="star">Stars</option>
+                        <option value="comet">Comets</option>
+                        <option value="asteroid">Asteroids</option>
                     </select>
                 </label>
                 <div>
