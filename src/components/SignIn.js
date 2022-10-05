@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { login } from '../utils/fetch-utils';
 
-export default class LandingPage extends Component {
+export default class SignIn extends Component {
 
     state = {
         email: '',

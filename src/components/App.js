@@ -6,13 +6,13 @@ import {
 } from 'react-router-dom';
 import AstroList from './AstroList';
 import CreateJournal from './CreateJournal';
+import Dashboard from './Dashboard';
 import Footer from './Footer';
 import Header from './Header';
 import JournalDetail from './JournalDetail';
 import Journal from './JournalList';
-import LandingPage from './LandingPage';
+import SignIn from './SignIn';
 import LoggedInHeader from './LoggedInHeader';
-import Main from './Main';
 import SignUp from './SignUp';
 import Wishlist from './Wishlist';
 
@@ -44,13 +44,13 @@ export default class App extends Component {
       <Router>
           { this.state.token ?  <LoggedInHeader logout={this.logout} /> : <Header /> }
           <Routes>
-            <Route path='/' element={<LandingPage login={this.login} />} />
+            <Route path='/' element={<SignIn login={this.login} />} />
 
             <Route path='/signup' element={<SignUp login={this.login} />} />
 
             <Route path="/main" element={
               <RequireAuth token={this.state.token} redirectTo="/">
-                <Main />
+                <Dashboard />
               </RequireAuth>
             } />
 
