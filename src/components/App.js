@@ -4,7 +4,7 @@ import {
   Route,
   Routes,
 } from 'react-router-dom';
-import AstroList from './AstroList';
+import AstroDisplay from './AstroDisplay';
 import CreateJournal from './CreateJournal';
 import Dashboard from './Dashboard';
 import Footer from './Footer';
@@ -54,9 +54,9 @@ export default class App extends Component {
               </RequireAuth>
             } />
 
-            <Route path="/astro-list" element={
+            <Route path="/astro" element={
               <RequireAuth token={this.state.token} redirectTo="/">
-                <AstroList token={this.state.token}/>
+                <AstroDisplay token={this.state.token}/>
               </RequireAuth>
             } />
 

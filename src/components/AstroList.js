@@ -1,90 +1,52 @@
-import React, { Component } from 'react'
-import { getSolarSystemAPI } from '../utils/api-utils';
-import AstroDisplay from './AstroDisplay';
+import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { addToWishlist, getWishlist } from '../utils/fetch-utils.js';
+import { setName } from '../utils/local-storage-utils.js';
 
-export default class AstroList extends Component {
+export default function AstroList({token, list}) {
+    const [wishlist, setWishlist] = useState([])
+    const navigate = useNavigate()
 
-    state = {
-        bodies: [],
-        search: '',
-        pageNumber: 1,
-        filter: 'all'
+    useEffect(() => {
+        getWishlist(token)
+        .then((res) => {
+            setWishlist(res)
+        })
+        .catch((error) => console.error(error))
+    }, [])
+    
+    const handleCreateJournal = (name) => {
+        setName(name);
+        navigate('../create');
     }
 
-    componentDidMount = async () => {
-        const solarSystemAPI = await getSolarSystemAPI(this.state.pageNumber, this.state.filter, this.state.search);
-        this.setState({ bodies: solarSystemAPI });
+    const handleAddToWishlist = async (name) => {
+        await addToWishlist({ englishname: name }, token);
+        setWishlist((wishlist) => [...wishlist, name])
     }
 
-    handleCategorySelection = async (e) => {
-        await this.setState({ filter: e.target.value, pageNumber: 1})
-        const solarSystemAPI = await getSolarSystemAPI(this.state.pageNumber, this.state.filter, this.state.search);
-        this.setState({ bodies: solarSystemAPI });
-    }
+    return (
+        <div className="astro-display">
 
-    handleNextPage = async (e) => {
-        await this.setState({pageNumber: this.state.pageNumber + 1});
-        const solarSystemAPI = await getSolarSystemAPI(this.state.pageNumber, this.state.filter, this.state.search);
-        this.setState({ bodies: solarSystemAPI });
-    }
+            {list.map(item => 
+                <div className="astro-item" key={item.id}>
+                    <h2>{item.name}</h2>
+                    <p>gravity: {item.gravity}</p>
+                    <p>date discovered: {item.discoveryDate}</p>
+                    <p>radius: {item.radius} KM</p>
+                    <div className='buttons'>
+                        <button 
+                            disabled={wishlist.includes(item.name)} 
+                            className='add-wishlist-button' 
+                            onClick={() => handleAddToWishlist(item.name)}>Add to Wishlist
+                        </button>
 
-    handlePreviousPage = async (e) => {
-        await this.setState({pageNumber: this.state.pageNumber - 1});
-        const solarSystemAPI = await getSolarSystemAPI(this.state.pageNumber, this.state.filter, this.state.search);
-        this.setState({ bodies: solarSystemAPI });
-    }
-
-    handleSearchChange = (e) => {
-        this.setState({ search: e.target.value });
-    }
-
-    handleClick = async () => {
-        const solarSystemAPI = await getSolarSystemAPI(this.state.pageNumber, this.state.filter, this.state.search);
-        this.setState({ bodies: solarSystemAPI })
-    }
-
-    render(){
-        return (
-            <div className='main'>
-
-                <h1>Dark Sky Objects</h1>
-                <div className="search-menu">
-                    <label>
-                        Filter by Category:
-                        <select onChange={this.handleCategorySelection}>
-                            <option value="all">Select Type</option>
-                            <option value="planets">Planets</option>
-                            <option value="moons">Moons</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </label>
-                    <div>
-                        <input placeholder= "Object Name" onChange={this.handleSearchChange}>
-                        </input>
-                        <button onClick={this.handleClick}>Search</button>
+                        <form onSubmit={() => handleCreateJournal(item.name)}>
+                            <button className='make-journal-button'>Make a Journal</button>
+                        </form>
                     </div>
                 </div>
-
-                <AstroDisplay token={this.props.token} display={this.state.bodies} />
-
-                <div className='buttons'>
-
-                    {this.state.pageNumber !== 1 && 
-                    <button className='prev-button' onClick={this.handlePreviousPage}>
-                        Prev Page
-                    </button>
-                    }
-
-                    {
-                    this.state.bodies.length === 20 &&
-                    <button className='next-button' onClick={this.handleNextPage}>
-                        Next Page 
-                    </button>
-                    }
-
-                </div>
-                
-            </div>
-        )
-    }
+                )}
+        </div>
+    )
 }
