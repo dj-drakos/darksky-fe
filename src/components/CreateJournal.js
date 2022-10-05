@@ -20,9 +20,8 @@ export default function CreateJournal({token}) {
     const navigate = useNavigate()
 
     useEffect(() => {
-        getName()
-            .then((name) => setState((state) => ({ ...state, englishname: name })))
-            .catch((error) => console.error(error))
+        const name = getName()
+        setState(state => ({ ...state, englishname: name }))
         }, [])
 
 
@@ -35,17 +34,17 @@ export default function CreateJournal({token}) {
             image_url: state.image_url
         }, token)
 
-        navigate('./journal')
+        navigate('../journal')
     }
 
     const handleTextChange = (e) => {
         e.preventDefault();
-        setState({ journal_entry: e.target.value })
+        setState(state =>({ ...state, journal_entry: e.target.value }))
     }
 
     const handleImageInputChange = (e) => {
         e.preventDefault();
-        setState({ image_url: e.target.value })
+        setState(state => ({...state, image_url: e.target.value }))
     }
 
     return (
