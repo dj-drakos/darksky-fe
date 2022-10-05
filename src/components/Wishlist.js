@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { getWishlist } from '../utils/fetch-utils';
-import { setName } from '../utils/local-storage-utils';
+import { getWishlist } from '../utils/server-utils';
+import { setLocalStorageName } from '../utils/local-storage-utils';
 
 export default function Wishlist({token}) {
     const [wishlist, setWishlist] = useState([])
@@ -15,7 +15,7 @@ export default function Wishlist({token}) {
     }, [token])
 
     const handleCreateJournal = name => {
-        setName(name);
+        setLocalStorageName(name);
         navigate('../create');
     }
 

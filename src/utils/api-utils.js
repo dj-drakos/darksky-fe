@@ -61,4 +61,3 @@ export async function getApodAPI () {
         .get(apodURL)
     return body;
 }
-

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { getLocationAPI } from '../utils/api-utils'
-import { setLocation, getLocation } from '../utils/local-storage-utils'
+import { setLocalStorageLocation, getLocalStorageLocation } from '../utils/local-storage-utils'
 
 const sevenTimerURL = process.env.REACT_APP_7TIMER_URL
 
@@ -12,7 +12,7 @@ export default function LocationPrompt() {
         })
 
     useEffect(() => {
-        const localStorageLocation = getLocation()
+        const localStorageLocation = getLocalStorageLocation()
         setState(localStorageLocation)
     }, [])
 
@@ -26,7 +26,7 @@ export default function LocationPrompt() {
     const handleSubmit = async e => {
         e.preventDefault();
         const newLocation = await getLocationAPI(name)
-        setLocation(newLocation)
+        setLocalStorageLocation(newLocation)
         setState(newLocation)
     }
 

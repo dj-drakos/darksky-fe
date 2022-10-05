@@ -2,7 +2,7 @@ const LOCATION = 'LOCATION'
 const TOKEN = 'TOKEN'
 const NAME = 'NAME'
 
-export function getLocation() {
+export function getLocalStorageLocation() {
     const loc = localStorage.getItem(LOCATION);
     if (!loc)
         return 0;
@@ -10,25 +10,29 @@ export function getLocation() {
     return location;
 }
 
-export function setLocation(location) {
+export function setLocalStorageLocation(location) {
     const locationString = JSON.stringify(location);
     localStorage.setItem(LOCATION, locationString)
 }
 
-export function getToken() {
+export function getLocalStorageToken() {
     const rawToken = localStorage.getItem(TOKEN);
     if (!rawToken)
-        return 0;
+        return;
     const token = JSON.parse(rawToken);
     return token;
 }
 
-export function setToken(token) {
+export function setLocalStorageToken(token) {
     const tokenString = JSON.stringify(token);
     localStorage.setItem(TOKEN, tokenString)
 }
 
-export function getName() {
+export function removeLocalStorageToken() {
+    localStorage.removeItem(TOKEN)
+}
+
+export function getLocalStorageName() {
     const rawName = localStorage.getItem(NAME);
     if (!rawName)
         return ('Astro-Body');
@@ -36,7 +40,7 @@ export function getName() {
     return name;
 }
 
-export function setName(Name) {
+export function setLocalStorageName(Name) {
     const nameString = JSON.stringify(Name);
     localStorage.setItem(NAME, nameString)
 }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getName } from '../utils/local-storage-utils';
-import { addJournalEntry } from '../utils/fetch-utils';
+import { getLocalStorageName } from '../utils/local-storage-utils';
+import { addEntry } from '../utils/server-utils';
 
 export default function CreateJournal({token}) {
     const createDate = () => {
@@ -20,14 +20,14 @@ export default function CreateJournal({token}) {
     const navigate = useNavigate()
 
     useEffect(() => {
-        const name = getName()
+        const name = getLocalStorageName()
         setState(state => ({ ...state, englishname: name }))
         }, [])
 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await addJournalEntry({
+        await addEntry({
             journal_entry: state.journal_entry,
             englishname: state.englishname,
             date: createDate(),

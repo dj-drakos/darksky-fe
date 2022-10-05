@@ -8,8 +8,8 @@ export async function signUp (email, password) {
         const { body } = await request
             .post(`${backendURL}/auth/signup`)
             .send({
-                email: email,
-                password: password,
+                email,
+                password,
             })
         if (body.error) {
             throw new Error(`${body.error.message} Status: ${body.error.status}`)
@@ -20,25 +20,15 @@ export async function signUp (email, password) {
     }
 }
 
-export async function login (email, password) {
+export async function signIn (email, password) {
     try {
         const { body } = await request
             .post(`${backendURL}/auth/signin`)
             .send({
-                email: email,
-                password: password,
+                email,
+                password,
             })
         return body.token;
-    } catch (error) {
-        console.error(`Error: ${error.message}`)
-    }
-}
-
-export async function getApodAPI () {
-    try {
-        const { body } = await request 
-        .get(apodURL)
-        return body;
     } catch (error) {
         console.error(`Error: ${error.message}`)
     }
@@ -50,7 +40,6 @@ export async function addToWishlist (listItem, token) {
             .post(`${backendURL}/api/wishlist`)
             .set('Authorization', token)
             .send(listItem);
-    
         return body;
     } catch (error) {
         console.error(`Error: ${error.message}`)
@@ -69,7 +58,7 @@ export async function getWishlist (token) {
     }
 }
 
-export async function fetchJournals (token) {
+export async function getJournal (token) {
     try {
         const { body } = await request
             .get(`${backendURL}/api/journals`)
@@ -80,7 +69,7 @@ export async function fetchJournals (token) {
     }
 }
 
-export async function addJournalEntry (entryData, token) {
+export async function addEntry (entryData, token) {
     try {
         const { body } = await request
             .post(`${backendURL}/api/journals`)
@@ -92,7 +81,7 @@ export async function addJournalEntry (entryData, token) {
     }
 }
 
-export async function fetchEntry (id, token) {
+export async function getEntry (id, token) {
     try {
         const { body } = await request
             .get(`${backendURL}/api/journals/${id}`)

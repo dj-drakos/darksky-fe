@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import {
   BrowserRouter as Router,
   Route,
@@ -17,31 +17,30 @@ import SignUp from './SignUp';
 import Wishlist from './Wishlist';
 
 import { RequireAuth } from '../utils/auth-utils';
+import { getLocalStorageToken, setLocalStorageToken, removeLocalStorageToken } from '../utils/local-storage-utils'
 
 import '../styles/App.css';
 import '../styles/style.css';
 
-const TOKEN = 'TOKEN';
-
 export default function App() {
-  const [stateToken, setStateToken] = useState(localStorage.getItem(TOKEN))
+  const [stateToken, setStateToken] = useState(getLocalStorageToken())
 
-  const setLocalStorageToken = token => {
-    localStorage.setItem(TOKEN, token)
+  const setToken = token => {
+    setLocalStorageToken(token)
     setStateToken(token)
   }
 
-  const clearLocalStorageToken = () => {
-    localStorage.removeItem(TOKEN)
+  const clearToken = () => {
+    removeLocalStorageToken()
     setStateToken(null)
   }
 
     return (
       <Router>
-          { stateToken ? <LoggedInHeader clearToken={clearLocalStorageToken} /> : <Header /> }
+          { stateToken ? <LoggedInHeader clearToken={clearToken} /> : <Header /> }
           <Routes>
-            <Route path='/signin' element={<SignIn setToken={setLocalStorageToken} />} />
-            <Route path='/signup' element={<SignUp setToken={setLocalStorageToken} />} />
+            <Route path='/signin' element={<SignIn setToken={setToken} />} />
+            <Route path='/signup' element={<SignUp setToken={setToken} />} />
             <Route path="/" element={
               <RequireAuth token={stateToken} redirectTo="/signin">
                 <Dashboard />

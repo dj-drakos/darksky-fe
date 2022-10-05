@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { fetchEntry, updateEntry, deleteEntry } from '../utils/fetch-utils';
+import { getEntry, updateEntry, deleteEntry } from '../utils/server-utils';
 
 export default function JournalDetail({token}){
     const [{journal_entry, englishname, date, image_url, loading}, setState] = useState({
@@ -15,7 +15,7 @@ export default function JournalDetail({token}){
 
     useEffect(() => {
         setState((state) => ({...state, loading: true}))
-        fetchEntry(id, token)
+        getEntry(id, token)
             .then((res) => {
                 setState({ ...res, loading: false })
             })

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { login } from '../utils/fetch-utils';
+import { signIn } from '../utils/server-utils';
 
 export default function SignIn({setToken}) {
 
@@ -13,7 +13,7 @@ export default function SignIn({setToken}) {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const token = await login(emailInput, passwordInput)
+        const token = await signIn(emailInput, passwordInput)
         setToken(token)
         navigate('../')
     } 

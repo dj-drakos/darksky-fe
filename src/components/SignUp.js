@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { signUp } from "../utils/fetch-utils"
+import { signUp } from "../utils/server-utils"
 
 
 export default function SignUp({setToken}) {
