@@ -12,19 +12,19 @@ export default function AstroDisplay({token}) {
 
     useEffect(() => {
         getSolarSystemAPI(pageNumber, filter, search)
-            .then((res) => setState((state) => ({ ...state, bodies: res })))
+            .then(res => setState(state => ({ ...state, bodies: res })))
     }, [filter, pageNumber, search])
 
-    const handleCategorySelection = (e) => {
-        setState((state) => ({ ...state, filter: e.target.value, pageNumber: 1 }))
+    const handleCategorySelection = e => {
+        setState(state => ({ ...state, filter: e.target.value, pageNumber: 1 }))
     }
 
-    const handlePageChange = (num) => {
-        setState((state) => ({ ...state, pageNumber: pageNumber + num }));
+    const handlePageChange = num => {
+        setState(state => ({ ...state, pageNumber: pageNumber + num }));
     }
 
-    const handleChange = (e) => {
-        setState((state) => ({ ...state, search: e.target.value}))
+    const handleChange = e => {
+        setState(state => ({ ...state, search: e.target.value}))
     }
 
     return (
