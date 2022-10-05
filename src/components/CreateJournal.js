@@ -1,69 +1,69 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { getName } from '../utils/local-storage-utils';
 import { addJournalEntry } from '../utils/fetch-utils';
 
-export default class CreateJournal extends Component {
-    createDate = () => {
+export default function CreateJournal({token}) {
+    const createDate = () => {
         const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
         let today = new Date();
         const date = today.toLocaleDateString('en-US', options);
         return date;
     }
 
-    state = {
-        journal_entry: 'Log your notes',
-        englishname: '',
-        date: this.createDate(),
-        image_url: 'https://www.astronomytrek.com/wp-content/uploads/2010/01/milky-way-galaxy.jpg',
-    }
+    const [state, setState] = useState({
+            journal_entry: 'Log your notes',
+            englishname: '',
+            date: createDate(),
+            image_url: 'https://www.astronomytrek.com/wp-content/uploads/2010/01/milky-way-galaxy.jpg',
+        })
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        getName()
+            .then((name) => setState((state) => ({ ...state, englishname: name })))
+            .catch((error) => console.error(error))
+        }, [])
 
 
-    componentDidMount = async () => {
-        const name = await getName()
-        this.setState({ englishname: name })
-    }
-
-
-    handleSubmit = async (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         await addJournalEntry({
-            journal_entry: this.state.journal_entry,
-            englishname: this.state.englishname,
-            date: this.createDate(),
-            image_url: this.state.image_url
-        }, this.props.token)
+            journal_entry: state.journal_entry,
+            englishname: state.englishname,
+            date: createDate(),
+            image_url: state.image_url
+        }, token)
 
-        this.props.history.push('/journal')
+        navigate('./journal')
     }
 
-    handleTextChange = async (e) => {
+    const handleTextChange = (e) => {
         e.preventDefault();
-        this.setState({ journal_entry: e.target.value })
+        setState({ journal_entry: e.target.value })
     }
 
-    handleImageInputChange = async (e) => {
+    const handleImageInputChange = (e) => {
         e.preventDefault();
-        this.setState({ image_url: e.target.value })
+        setState({ image_url: e.target.value })
     }
 
-    render() {
-        return (
-            <div className="main">
+    return (
+        <div className="main">
 
-                <h1>Create Journal</h1>
+            <h1>Create Journal</h1>
 
-                <form className='journal-entry' onSubmit={this.handleSubmit}>
-                    <h2>{this.state.englishname}</h2>
-                    <textarea placeholder="observe anything interesting?" onChange={this.handleTextChange} ></textarea>
-                    <span className='journal-image'>
-                        <label>
-                            <input onChange={this.handleImageInputChange} type="url" placeholder="image url"/>
-                        </label>
-                        <button>Done</button>
-                    </span>
-                </form>
+            <form className='journal-entry' onSubmit={handleSubmit}>
+                <h2>{state.englishname}</h2>
+                <textarea placeholder="observe anything interesting?" onChange={handleTextChange} ></textarea>
+                <span className='journal-image'>
+                    <label>
+                        <input onChange={handleImageInputChange} type="url" placeholder="image url"/>
+                    </label>
+                    <button>Done</button>
+                </span>
+            </form>
 
-            </div>
-        )
-    }
+        </div>
+    )
 }

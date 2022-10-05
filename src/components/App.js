@@ -9,7 +9,7 @@ import CreateJournal from './CreateJournal';
 import Footer from './Footer';
 import Header from './Header';
 import JournalDetail from './JournalDetail';
-import Journal from './Journal';
+import Journal from './JournalList';
 import LandingPage from './LandingPage';
 import LoggedInHeader from './LoggedInHeader';
 import Main from './Main';
@@ -72,7 +72,7 @@ export default class App extends Component {
               </RequireAuth>
             } />
             
-            <Route path="/journal-detail/:entryId" element={
+            <Route path="/journal/:id" element={
               <RequireAuth token={this.state.token} redirectTo="/">
                 <JournalDetail token={this.state.token} />
               </RequireAuth>

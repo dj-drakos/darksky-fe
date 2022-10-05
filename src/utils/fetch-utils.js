@@ -76,8 +76,8 @@ export async function fetchEntry (id, token) {
     const { body } = await request
         .get(`${backendURL}/api/journals/${id}`)
         .set('Authorization', token)
-
-    return body;
+    //TODO: remove array index after fixing backend route
+    return body[0];
 }
 
 export async function updateEntry (id, data, token) {

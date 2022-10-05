@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-export default class JournalItem extends Component {
+export default class JournalCard extends Component {
 
     render() {
         return (
-                <Link className="journal-item" to={`/journal-detail/${this.props.item.id}`} >
+                <Link className="journal-item" to={`/journal/${this.props.item.id}`}>
 
                     <div>
                         <img alt="journal pic" src={this.props.item.image_url} />
