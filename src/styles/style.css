@@ -87,6 +87,10 @@ button:active {
     transform: translate(1px, 1px);
 }
 
+button:disabled {
+    display: none;
+}
+
 h1 {
     font-family: var(--sans);
     font-size: 4rem;

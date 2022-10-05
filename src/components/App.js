@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import {
   BrowserRouter as Router,
   Route,
-  Switch,
-  Redirect
+  Routes,
 } from 'react-router-dom';
 import AstroList from './AstroList';
 import CreateJournal from './CreateJournal';
@@ -16,6 +15,9 @@ import LoggedInHeader from './LoggedInHeader';
 import Main from './Main';
 import SignUp from './SignUp';
 import Wishlist from './Wishlist';
+
+import { RequireAuth } from '../utils/auth-utils';
+
 import '../styles/App.css';
 import '../styles/style.css';
 
@@ -41,54 +43,48 @@ export default class App extends Component {
     return (
       <Router>
           { this.state.token ?  <LoggedInHeader logout={this.logout} /> : <Header /> }
-          <Switch>
-            <Route exact path='/' render={
-              (routerProps) => 
-              <LandingPage login={this.login} {...routerProps} />
+          <Routes>
+            <Route path='/' element={<LandingPage login={this.login} />} />
+
+            <Route path='/signup' element={<SignUp login={this.login} />} />
+
+            <Route path="/main" element={
+              <RequireAuth token={this.state.token} redirectTo="/">
+                <Main />
+              </RequireAuth>
             } />
 
-            <Route exact path='/signup' render={
-              (routerProps) => 
-              <SignUp login={this.login} {...routerProps} />
+            <Route path="/astro-list" element={
+              <RequireAuth token={this.state.token} redirectTo="/">
+                <AstroList token={this.state.token}/>
+              </RequireAuth>
             } />
 
-            <Route exact path="/main" render={
-              (routerProps) =>
-              this.state.token ? 
-              <Main token={this.state.token} {...routerProps} /> : <Redirect to="/" />
-          } />
+            <Route path="/journal" element={
+              <RequireAuth token={this.state.token} redirectTo="/">
+                <Journal token={this.state.token}/>
+              </RequireAuth>
+            } />
 
-            <Route exact path="/astro-list" render={
-              (routerProps) =>
-              this.state.token ? 
-              <AstroList token={this.state.token} {...routerProps} /> : <Redirect to="/" />
-          } />
+            <Route path="/create" element={
+              <RequireAuth token={this.state.token} redirectTo="/">
+                <CreateJournal token={this.state.token}  />
+              </RequireAuth>
+            } />
+            
+            <Route path="/journal-detail/:entryId" element={
+              <RequireAuth token={this.state.token} redirectTo="/">
+                <JournalDetail token={this.state.token} />
+              </RequireAuth>
+            } />
 
-            <Route exact path="/journal" render={
-              (routerProps) =>
-              this.state.token ? 
-              <Journal token={this.state.token} {...routerProps} /> : <Redirect to="/" />
-          } />
-
-            <Route exact path="/create" render={
-              (routerProps) =>
-              this.state.token ? 
-              <CreateJournal token={this.state.token} {...routerProps} /> : <Redirect to="/" />
-          } />
-
-            <Route exact path="/journal-detail/:entryId" render={
-              (routerProps) =>
-              this.state.token ? 
-              <JournalDetail token={this.state.token} {...routerProps} /> : <Redirect to="/" />
-          } />
-
-            <Route exact path="/wishlist" render={
-              (routerProps) =>
-              this.state.token ? 
-              <Wishlist token={this.state.token} {...routerProps} /> : <Redirect to="/" />
-          } />
-          </Switch>
-          <Footer />
+            <Route path="/wishlist" element={
+              <RequireAuth token={this.state.token} redirectTo="/">
+                <Wishlist token={this.state.token}/>
+              </RequireAuth>
+            } />
+          </Routes>
+        <Footer />
       </Router>
     )
   }
