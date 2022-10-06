@@ -1,7 +1,6 @@
 import request from 'superagent';
 
 const backendURL = process.env.REACT_APP_BACKEND_URL
-const apodURL = process.env.REACT_APP_APOD_URL
 
 export async function signUp (email, password) {
     try {
