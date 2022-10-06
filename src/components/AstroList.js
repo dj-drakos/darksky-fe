@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import AstroCard from './AstroCard.js';
-import { addToWishlist, getWishlist } from '../utils/server-utils.js';
+import { addWishlistItem, getWishlist } from '../utils/server-utils.js';
 import { setLocalStorageName } from '../utils/local-storage-utils.js';
 
 export default function AstroList({token, list}) {
@@ -10,7 +10,10 @@ export default function AstroList({token, list}) {
 
     useEffect(() => {
         getWishlist(token)
-        .then(res => setWishlist(res))
+        .then(res => {
+            const cleanWishlist = res.map(item => item.englishname)
+            setWishlist(cleanWishlist)}
+            )
         .catch(error => console.error(error))
     }, [token])
     
@@ -20,7 +23,7 @@ export default function AstroList({token, list}) {
     }
 
     const handleAddToWishlist = async name => {
-        await addToWishlist({ englishname: name }, token);
+        await addWishlistItem({ englishname: name }, token);
         setWishlist(wishlist => [...wishlist, name])
     }
 

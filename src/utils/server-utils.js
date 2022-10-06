@@ -34,25 +34,35 @@ export async function signIn (email, password) {
     }
 }
 
-export async function addToWishlist (listItem, token) {
+export async function getWishlist (token) {
     try {
         const { body } = await request
-            .post(`${backendURL}/api/wishlist`)
+            .get(`${backendURL}/api/wishlist`)
             .set('Authorization', token)
-            .send(listItem);
         return body;
     } catch (error) {
         console.error(`Error: ${error.message}`)
     }
 }
 
-export async function getWishlist (token) {
+export async function addWishlistItem (listItem, token) {
     try {
         const { body } = await request
-            .get(`${backendURL}/api/wishlist`)
+            .post(`${backendURL}/api/wishlist`)
             .set('Authorization', token)
-        const mungedData = body.map((item) => item.englishname)
-        return mungedData;
+            .send(listItem)
+        return body
+    } catch (error) {
+        console.error(`Error: ${error.message}`)
+    }
+}
+
+export async function deleteWishlistItem (listItemId, token) {
+    try {
+        const { body } = await request
+            .delete(`${backendURL}/api/wishlist/${listItemId}`)
+            .set('Authorization', token)
+        return body
     } catch (error) {
         console.error(`Error: ${error.message}`)
     }

@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { getWishlist } from '../utils/server-utils';
+import { getWishlist, deleteWishlistItem } from '../utils/server-utils';
 import { setLocalStorageName } from '../utils/local-storage-utils';
 
 export default function Wishlist({token}) {
     const [wishlist, setWishlist] = useState([])
-
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -19,20 +18,31 @@ export default function Wishlist({token}) {
         navigate('../create');
     }
 
+    const handleRemoveFromWishlist = async id => {
+        await deleteWishlistItem(id, token)
+        getWishlist(token)
+            .then(res => setWishlist(res))
+            .catch(error => console.log(error))
+    }
+
     return (
-        <div  className='main'>
+        <div className='main'>
             <h1>Wishlist</h1>
             <div className='astro-display'>
-                {
-                    wishlist.length &&
-                        wishlist.map((item, index) => 
-                            <div key={item + index} className='wish-item'>
-                                <h2>{item}</h2>
-                                <form onSubmit={() => handleCreateJournal(item)}>
-                                    <button className='make-journal-button'>Make a Journal</button>
-                                </form>
-                            </div>
-                        )
+                {wishlist.length ?
+                    wishlist.map(({englishname: name, id}) => 
+                        <div key={id} className='wish-item'>
+                            <h2>{name}</h2>
+                            <button 
+                                className='wishlist-button' 
+                                onClick={() => handleRemoveFromWishlist(id)}>Remove from Wishlist
+                            </button>
+                            <form onSubmit={() => handleCreateJournal(name)}>
+                                <button className='make-journal-button'>Make a Journal</button>
+                            </form>
+                        </div>
+                    )
+                : <h2>There are no items in your wishlist.</h2>
                 }
             </div>
         </div>

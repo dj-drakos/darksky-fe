@@ -217,7 +217,7 @@ textarea:focus {
     justify-content: space-between;
 }
 
-.prev-button, .add-wishlist-button {
+.prev-button, .wishlist-button {
     order: 1;
 }
 

@@ -9,7 +9,7 @@ export default function AstroCard({ item, handleAddToWishlist, handleCreateJourn
         <div className='buttons'>
           <button 
             disabled={!handleAddToWishlist && true} 
-            className='add-wishlist-button' 
+            className='wishlist-button' 
             onClick={() => handleAddToWishlist(name)}>Add to Wishlist
           </button>
 
