@@ -87,6 +87,10 @@ button:active {
     transform: translate(1px, 1px);
 }
 
+button:disabled {
+    display: none;
+}
+
 h1 {
     font-family: var(--sans);
     font-size: 4rem;
@@ -162,9 +166,6 @@ select {
 
 textarea:focus {
     outline: none;
-    /* Start https://www.cursors-4u.com */ 
-    cursor: url(https://cur.cursors-4u.net/cursors/cur-6/cur518.cur), auto !important;
-    /* End https://www.cursors-4u.com */
 }
 
 .astro-display {
@@ -213,7 +214,7 @@ textarea:focus {
     justify-content: space-between;
 }
 
-.prev-button, .add-wishlist-button {
+.prev-button, .wishlist-button {
     order: 1;
 }
 
