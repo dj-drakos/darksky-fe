@@ -53,9 +53,7 @@ export default function JournalDetail({token}){
             { loading ? <h2>Loading entry...</h2>
             :
             <div className='journal-detail'>
-                    <h2>
-                        {englishname}
-                    </h2>
+                <h2>{englishname}</h2>
                 <div className='journal-detail-body'>
                     <section>
                         <img src={image_url} alt="astro" />

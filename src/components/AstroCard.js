@@ -12,10 +12,8 @@ export default function AstroCard({ item, handleAddToWishlist, handleCreateJourn
             className='wishlist-button' 
             onClick={() => handleAddToWishlist(name)}>Add to Wishlist
           </button>
-
-          <form onSubmit={() => handleCreateJournal(name)}>
-            <button className='make-journal-button'>Make a Journal</button>
-          </form>
+          <button className='make-journal-button' onClick={() => handleCreateJournal(name)}>Make a Journal
+          </button>
         </div>
     </div>
   )
