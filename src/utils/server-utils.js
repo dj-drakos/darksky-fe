@@ -5,7 +5,7 @@ const backendURL = process.env.REACT_APP_BACKEND_URL
 export async function signUp (email, password) {
     try {
         const { body } = await request
-            .post(`${backendURL}/auth/signup`)
+            .post(`${backendURL}/api/v1/users/`)
             .send({
                 email,
                 password,
@@ -22,7 +22,7 @@ export async function signUp (email, password) {
 export async function signIn (email, password) {
     try {
         const { body } = await request
-            .post(`${backendURL}/auth/signin`)
+            .post(`${backendURL}/api/v1/users/signin`)
             .send({
                 email,
                 password,
@@ -36,7 +36,7 @@ export async function signIn (email, password) {
 export async function getWishlist (token) {
     try {
         const { body } = await request
-            .get(`${backendURL}/api/wishlist`)
+            .get(`${backendURL}/api/v1/wishlists`)
             .set('Authorization', token)
         return body;
     } catch (error) {
@@ -47,7 +47,7 @@ export async function getWishlist (token) {
 export async function addWishlistItem (listItem, token) {
     try {
         const { body } = await request
-            .post(`${backendURL}/api/wishlist`)
+            .post(`${backendURL}/api/v1/wishlists`)
             .set('Authorization', token)
             .send(listItem)
         return body
@@ -59,7 +59,7 @@ export async function addWishlistItem (listItem, token) {
 export async function deleteWishlistItem (listItemId, token) {
     try {
         const { body } = await request
-            .delete(`${backendURL}/api/wishlist/${listItemId}`)
+            .delete(`${backendURL}/api/v1/wishlists/${listItemId}`)
             .set('Authorization', token)
         return body
     } catch (error) {
@@ -70,7 +70,7 @@ export async function deleteWishlistItem (listItemId, token) {
 export async function getJournal (token) {
     try {
         const { body } = await request
-            .get(`${backendURL}/api/journals`)
+            .get(`${backendURL}/api/v1/journals`)
             .set('Authorization', token)
         return body;
     } catch (error) {
@@ -81,7 +81,7 @@ export async function getJournal (token) {
 export async function addEntry (entryData, token) {
     try {
         const { body } = await request
-            .post(`${backendURL}/api/journals`)
+            .post(`${backendURL}/api/v1/journals`)
             .send(entryData)
             .set('Authorization', token)
         return body;
@@ -93,7 +93,7 @@ export async function addEntry (entryData, token) {
 export async function getEntry (id, token) {
     try {
         const { body } = await request
-            .get(`${backendURL}/api/journals/${id}`)
+            .get(`${backendURL}/api/v1/journals/${id}`)
             .set('Authorization', token)
         //TODO: remove array index after fixing backend route
         return body[0];
@@ -105,7 +105,7 @@ export async function getEntry (id, token) {
 export async function updateEntry (id, data, token) {
     try {
         const { body } = await request
-            .put(`${backendURL}/api/journals/${id}`)
+            .put(`${backendURL}/api/v1/journals/${id}`)
             .send(data)
             .set('Authorization', token)
         return body;
@@ -117,7 +117,7 @@ export async function updateEntry (id, data, token) {
 export async function deleteEntry (id, token) {
     try {
         const { body } = await request
-            .delete(`${backendURL}/api/journals/${id}`)
+            .delete(`${backendURL}/api/v1/journals/${id}`)
             .set('Authorization', token)
         return body
     } catch (error) {
