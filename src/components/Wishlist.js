@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { getWishlist, deleteWishlistItem } from '../utils/server-utils';
-import { setLocalStorageName } from '../utils/local-storage-utils';
 
 export default function Wishlist({token}) {
     const [wishlist, setWishlist] = useState([])
@@ -14,8 +13,7 @@ export default function Wishlist({token}) {
     }, [token])
 
     const handleCreateJournal = name => {
-        setLocalStorageName(name);
-        navigate('../create');
+        navigate('../journal/create', { state: { name }});
     }
 
     const handleRemoveFromWishlist = async id => {

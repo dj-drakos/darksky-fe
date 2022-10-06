@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import AstroCard from './AstroCard.js';
 import { addWishlistItem, getWishlist } from '../utils/server-utils.js';
-import { setLocalStorageName } from '../utils/local-storage-utils.js';
 
 export default function AstroList({token, list}) {
     const [wishlist, setWishlist] = useState([])
@@ -18,8 +17,7 @@ export default function AstroList({token, list}) {
     }, [token])
     
     const handleCreateJournal = name => {
-        setLocalStorageName(name);
-        navigate('../create');
+        navigate('../journal/create', { state: { name }});
     }
 
     const handleAddToWishlist = async name => {

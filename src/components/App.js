@@ -59,7 +59,7 @@ export default function App() {
               </RequireAuth>
             } />
 
-            <Route path="/create" element={
+            <Route path="/journal/create" element={
               <RequireAuth token={stateToken} redirectTo="/signin">
                 <CreateJournal token={stateToken}  />
               </RequireAuth>

@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { getLocalStorageName } from '../utils/local-storage-utils';
+import React, { useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { addEntry } from '../utils/server-utils';
 
 export default function CreateJournal({token}) {
@@ -10,20 +9,15 @@ export default function CreateJournal({token}) {
         const date = today.toLocaleDateString('en-US', options);
         return date;
     }
+    const location = useLocation()
+    const navigate = useNavigate()
 
     const [state, setState] = useState({
             journal_entry: 'Log your notes',
-            englishname: '',
+            englishname: location.state?.name || 'Unidentified object',
             date: createDate(),
             image_url: 'https://www.astronomytrek.com/wp-content/uploads/2010/01/milky-way-galaxy.jpg',
         })
-    const navigate = useNavigate()
-
-    useEffect(() => {
-        const name = getLocalStorageName()
-        setState(state => ({ ...state, englishname: name }))
-        }, [])
-
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -33,7 +27,6 @@ export default function CreateJournal({token}) {
             date: createDate(),
             image_url: state.image_url
         }, token)
-
         navigate('../journal')
     }
 
@@ -49,9 +42,7 @@ export default function CreateJournal({token}) {
 
     return (
         <div className="main">
-
             <h1>Create Journal</h1>
-
             <form className='journal-entry' onSubmit={handleSubmit}>
                 <h2>{state.englishname}</h2>
                 <textarea placeholder="observe anything interesting?" onChange={handleTextChange} ></textarea>
@@ -62,7 +53,6 @@ export default function CreateJournal({token}) {
                     <button>Done</button>
                 </span>
             </form>
-
         </div>
     )
 }
