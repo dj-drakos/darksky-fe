@@ -28,7 +28,7 @@ export default function Wishlist({token}) {
             <h1>Wishlist</h1>
             <div className='astro-display'>
                 {wishlist.length ?
-                    wishlist.map(({englishname: name, id}) => 
+                    wishlist.map(({name, id}) => 
                         <div key={id} className='wish-item'>
                             <h2>{name}</h2>
                             <button 

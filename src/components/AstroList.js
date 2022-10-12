@@ -10,7 +10,7 @@ export default function AstroList({token, list}) {
     useEffect(() => {
         getWishlist(token)
         .then(res => {
-            const cleanWishlist = res.map(item => item.englishname)
+            const cleanWishlist = res.map(item => item.name)
             setWishlist(cleanWishlist)}
             )
         .catch(error => console.error(error))
@@ -21,7 +21,7 @@ export default function AstroList({token, list}) {
     }
 
     const handleAddToWishlist = async name => {
-        await addWishlistItem({ englishname: name }, token);
+        await addWishlistItem({ name }, token);
         setWishlist(wishlist => [...wishlist, name])
     }
 
