@@ -97,8 +97,7 @@ export async function getEntry (id, token) {
         const { body } = await request
             .get(`${backendURL}/api/v1/journals/${id}`)
             .set('Authorization', token)
-        //TODO: remove array index after fixing backend route
-        return body[0];
+        return body;
     } catch (error) {
         console.error(`Error: ${error.message}`)
     }
