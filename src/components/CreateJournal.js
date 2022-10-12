@@ -8,20 +8,20 @@ export default function CreateJournal({token}) {
     const location = useLocation()
     const navigate = useNavigate()
 
-    const [{date, entry, imageUrl, name}, setState] = useState({
+    const [{date, entry, imageUrl, objectName}, setState] = useState({
             date: createDate(),
             entry: 'Log your notes',
             imageUrl: 'https://www.astronomytrek.com/wp-content/uploads/2010/01/milky-way-galaxy.jpg',
-            name: location.state?.name || 'Unidentified object',
+            objectName: location.state?.objectName || 'Unidentified object',
         })
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         await addEntry({
-            journal_entry: entry,
-            englishname: name,
+            entry,
+            objectName,
             date,
-            image_url: imageUrl,
+            imageUrl,
         }, token)
         navigate('../journal')
     }
@@ -34,7 +34,7 @@ export default function CreateJournal({token}) {
         <div className="main">
             <h1>Create Journal Entry</h1>
             <form className='journal-entry' onSubmit={handleSubmit}>
-                <h2>{name}</h2>
+                <h2>{objectName}</h2>
                 <h4>{date}</h4>
                 <textarea placeholder="observe anything interesting?" name="entry" value={entry} onChange={handleChange} ></textarea>
                 <span className='journal-image'>
