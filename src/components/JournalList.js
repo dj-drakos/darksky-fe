@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import JournalCard from './JournalCard';
-import { getJournal } from '../utils/server-utils';
+import { getJournals } from '../utils/server-utils';
 
 export default function Journal({token}) {
     const [journals, setJournals] = useState([])
 
     useEffect(() => {
-        getJournal(token)
+        getJournals(token)
             .then((res) => setJournals(res))
     }, [token])
 

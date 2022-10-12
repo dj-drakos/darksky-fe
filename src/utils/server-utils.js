@@ -14,7 +14,6 @@ export async function signUp (email, password) {
         if (body.error) {
             throw new Error(`${body.error.message} Status: ${body.error.status}`)
         }
-        console.log(res)
         return body.sessionToken;
     } catch (error) {
         console.error(`Error: ${error.message}`)
@@ -69,7 +68,7 @@ export async function deleteWishlistItem (listItemId, token) {
     }
 }
 
-export async function getJournal (token) {
+export async function getJournals (token) {
     try {
         const { body } = await request
             .get(`${backendURL}/api/v1/journals`)

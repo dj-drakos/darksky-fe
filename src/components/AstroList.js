@@ -10,19 +10,19 @@ export default function AstroList({token, list}) {
     useEffect(() => {
         getWishlist(token)
         .then(res => {
-            const cleanWishlist = res.map(item => item.name)
+            const cleanWishlist = res.map(item => item.objectName)
             setWishlist(cleanWishlist)}
             )
         .catch(error => console.error(error))
     }, [token])
     
-    const handleCreateJournal = name => {
-        navigate('../journal/create', { state: { name }});
+    const handleCreateJournal = objectName => {
+        navigate('../journal/create', { state: { objectName }});
     }
 
-    const handleAddToWishlist = async name => {
-        await addWishlistItem({ name }, token);
-        setWishlist(wishlist => [...wishlist, name])
+    const handleAddToWishlist = async objectName => {
+        await addWishlistItem({ objectName }, token);
+        setWishlist(wishlist => [...wishlist, objectName])
     }
 
     return (
