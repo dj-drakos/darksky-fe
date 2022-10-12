@@ -17,21 +17,21 @@ import SignUp from './SignUp';
 import Wishlist from './Wishlist';
 
 import { RequireAuth } from '../utils/auth-utils';
-import { getLocalStorageToken, setLocalStorageToken, removeLocalStorageToken } from '../utils/local-storage-utils'
+import { getSessionStorageToken, setSessionStorageToken, removeSessionStorageToken } from '../utils/browser-storage-utils'
 
 import '../styles/App.css';
 import '../styles/style.css';
 
 export default function App() {
-  const [stateToken, setStateToken] = useState(getLocalStorageToken())
+  const [stateToken, setStateToken] = useState(getSessionStorageToken())
 
   const setToken = token => {
-    // setLocalStorageToken(token)
+    setSessionStorageToken(token)
     setStateToken(token)
   }
 
   const clearToken = () => {
-    // removeLocalStorageToken()
+    removeSessionStorageToken()
     setStateToken(null)
   }
 
