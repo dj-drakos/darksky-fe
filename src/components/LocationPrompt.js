@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { getLocationAPI } from '../utils/api-utils'
-import { setLocalStorageLocation, getLocalStorageLocation } from '../utils/local-storage-utils'
+import { setLocalStorageLocation, getLocalStorageLocation } from '../utils/browser-storage-utils'
 
 const sevenTimerURL = process.env.REACT_APP_7TIMER_URL
 

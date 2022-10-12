@@ -1,17 +1,16 @@
 import { Link } from 'react-router-dom';
 
-export default function JournalCard({journal}) {
-    const {date, englishname: name, id, image_url, journal_entry} = journal
-
+export default function JournalCard({ entryData }) {
+    const { date, objectName, id, imageUrl, entry } = entryData
     return (
         <Link className="journal-item" to={`/journal/${id}`}>
             <div>
-                <img alt="journal pic" src={image_url} />
+                <img alt="journal pic" src={imageUrl} />
                 <h4>{date}</h4>
             </div>
             <article>
-                <h2>{name}</h2>
-                <p>{journal_entry}</p>
+                <h2>{objectName}</h2>
+                <p>{entry}</p>
             </article>
         </Link>
     )

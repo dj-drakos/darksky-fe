@@ -14,17 +14,15 @@ export function setLocalStorageLocation(location) {
     localStorage.setItem(LOCATION, locationString)
 }
 
-export function getLocalStorageToken() {
-    const token = localStorage.getItem(TOKEN);
-    if (!token)
-        return;
-    return token;
+export function getSessionStorageToken() {
+    return sessionStorage.getItem(TOKEN) ?? null;
 }
 
-export function setLocalStorageToken(token) {
-    localStorage.setItem(TOKEN, token)
+export function setSessionStorageToken(token) {
+    sessionStorage.setItem(TOKEN, token)
 }
 
-export function removeLocalStorageToken() {
-    localStorage.removeItem(TOKEN)
+export function removeSessionStorageToken() {
+    sessionStorage.removeItem(TOKEN)
+    localStorage.removeItem(LOCATION)
 }

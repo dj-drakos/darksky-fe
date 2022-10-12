@@ -3,18 +3,21 @@ import JournalCard from './JournalCard';
 import { getJournal } from '../utils/server-utils';
 
 export default function Journal({token}) {
-    const [journals, setJournals] = useState([])
+    const [entries, setEntries] = useState([])
 
     useEffect(() => {
         getJournal(token)
-            .then((res) => setJournals(res))
+            .then((res) => setEntries(res))
     }, [token])
 
     return (
         <div className="main">
-            <h1>Journals</h1>
+            <h1>Journal</h1>
             <main>
-                {journals.map(journal => <JournalCard key={journal.id} journal={journal} />)}
+                {entries.length ? 
+                entries.map(entry => <JournalCard key={entry.id} entryData={entry} />)
+                :<h2>There are no entries in your journal.</h2>
+                }
             </main>
         </div>
     )
