@@ -5,15 +5,16 @@ const backendURL = process.env.REACT_APP_BACKEND_URL
 export async function signUp (email, password) {
     try {
         const { body } = await request
-            .post(`${backendURL}/api/v1/users/`)
+            .post(`${backendURL}/api/v1/users/signup`)
             .send({
                 email,
                 password,
             })
+            .withCredentials()
         if (body.error) {
             throw new Error(`${body.error.message} Status: ${body.error.status}`)
         }
-        return body.token;
+        return body;
     } catch (error) {
         console.error(`Error: ${error.message}`)
     }
@@ -27,7 +28,8 @@ export async function signIn (email, password) {
                 email,
                 password,
             })
-        return body.token;
+            .withCredentials()
+        return body;
     } catch (error) {
         console.error(`Error: ${error.message}`)
     }

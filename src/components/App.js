@@ -26,12 +26,12 @@ export default function App() {
   const [stateToken, setStateToken] = useState(getLocalStorageToken())
 
   const setToken = token => {
-    setLocalStorageToken(token)
+    // setLocalStorageToken(token)
     setStateToken(token)
   }
 
   const clearToken = () => {
-    removeLocalStorageToken()
+    // removeLocalStorageToken()
     setStateToken(null)
   }
 
