@@ -12,7 +12,7 @@ export async function getSolarSystemAPI (pageNumber, bodyType, search) {
             URL = `${systemeSolaireURL}?order=englishName,asc&page=${pageNumber},20&filter[]=englishName,cs,${search}`;
         } 
         else {
-            URL = `${systemeSolaireURL}?order=englishName,asc&page=1,20&filter[]=bodyType,eq,${bodyType}&filter[]=englishName,cs,${search}`;
+            URL = `${systemeSolaireURL}?order=englishName,asc&page=${pageNumber},20&filter[]=bodyType,eq,${bodyType}&filter[]=englishName,cs,${search}`;
         }
         const { body } = await request 
             .get(URL)

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { getSolarSystemAPI } from '../utils/api-utils';
 import AstroList from './AstroList';
 
+
+
 export default function AstroDisplay({token}) {
     const [{bodies, search, pageNumber, filter}, setState] = useState({
         bodies: [],
@@ -20,7 +22,7 @@ export default function AstroDisplay({token}) {
     }
 
     const handlePageChange = num => {
-        setState(state => ({ ...state, pageNumber: pageNumber + num }));
+        setState(state => ({ ...state, pageNumber: state.pageNumber + num }));
     }
 
     const handleChange = e => {
