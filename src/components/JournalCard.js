@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom';
 
-export default function JournalCard({journal}) {
-    const {date, objectName, id, imageUrl, entry} = journal
-
+export default function JournalCard({ entryData }) {
+    const { date, objectName, id, imageUrl, entry } = entryData
     return (
         <Link className="journal-item" to={`/journal/${id}`}>
             <div>

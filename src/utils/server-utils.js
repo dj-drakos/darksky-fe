@@ -68,7 +68,7 @@ export async function deleteWishlistItem (listItemId, token) {
     }
 }
 
-export async function getJournals (token) {
+export async function getJournal (token) {
     try {
         const { body } = await request
             .get(`${backendURL}/api/v1/journals`)
