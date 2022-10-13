@@ -18,9 +18,8 @@ export default function Wishlist({token}) {
 
     const handleRemoveFromWishlist = async id => {
         await deleteWishlistItem(id, token)
-        getWishlist(token)
-            .then(res => setWishlist(res))
-            .catch(error => console.log(error))
+        const newWishlist = await getWishlist(token)
+        setWishlist(newWishlist)
     }
 
     return (
