@@ -12,7 +12,7 @@ export async function getSolarSystemAPI (pageNumber, bodyType, search) {
             URL = `${systemeSolaireURL}?order=englishName,asc&page=${pageNumber},20&filter[]=englishName,cs,${search}`;
         } 
         else {
-            URL = `${systemeSolaireURL}?order=englishName,asc&page=1,20&filter[]=bodyType,eq,${bodyType}&filter[]=englishName,cs,${search}`;
+            URL = `${systemeSolaireURL}?order=englishName,asc&page=${pageNumber},20&filter[]=bodyType,eq,${bodyType}&filter[]=englishName,cs,${search}`;
         }
         const { body } = await request 
             .get(URL)
@@ -21,8 +21,12 @@ export async function getSolarSystemAPI (pageNumber, bodyType, search) {
             id: item.id,
             name: item.englishName ?? item.id,
             bodyType: item.bodyType,
-            discoveryDate: item.discoveryDate,
+            avgTemp: item.avgTemp,
+            dimension: item.dimension,
             gravity: item.gravity,
+            mass: item.mass,
+            vol: item.vol,
+            density: item.density,
             radius: item.meanRadius,
             moons: item.moons,
             aroundPlanet: item.aroundPlanet
