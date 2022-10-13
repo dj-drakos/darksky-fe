@@ -102,7 +102,7 @@ export async function getEntry (id, token) {
     }
 }
 
-export async function updateEntry (id, data, token) {
+export async function updateEntry (id, token, data) {
     try {
         const { body } = await request
             .put(`${backendURL}/api/v1/journals/${id}`)

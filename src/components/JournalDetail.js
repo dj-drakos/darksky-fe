@@ -10,6 +10,7 @@ export default function JournalDetail({token}){
     imageUrl: '',
     loading: true
   })
+
   const navigate = useNavigate()
   let { id } = useParams()
 
@@ -26,24 +27,14 @@ export default function JournalDetail({token}){
     setState((state) => ({ ...state, entry: e.target.value }))
   }
 
-  const handleSubmit = async (e) => {
+  const handleClick = async (e, action) => {
     e.preventDefault();
-    await updateEntry(
-      id, 
-      {
-        entry,
-        objectName,
-        date,
-        imageUrl
-      },
-      token
-      )
-
-    navigate('../journal')
-  }
-
-  const handleDelete = async () => {
-    await deleteEntry(id, token);
+    await action(id, token, {
+      entry,
+      objectName,
+      date,
+      imageUrl
+    },)
     navigate('../journal')
   }
 
@@ -60,11 +51,11 @@ export default function JournalDetail({token}){
             <h4>{date}</h4>
           </section>
           <article>
-            <form onSubmit={handleSubmit}>
+            <form >
               <textarea onChange={handleChange} value={entry}></textarea>
               <div className='journal-edit-buttons'>
-                <button>Save</button>
-                <button onClick={handleDelete}>Delete</button>
+                <button onClick={(e) => handleClick(e, updateEntry)}>Save</button>
+                <button onClick={(e) => handleClick(e, deleteEntry)}>Delete</button>
               </div>
             </form>
           </article>
