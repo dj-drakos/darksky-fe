@@ -31,7 +31,7 @@ export default function SignIn({setToken}) {
             <h1>🌝</h1>
             <div className='login'>
                 <p >
-                🔭 Dark Sky Observer App
+                🔭 Dark Sky Observer
                 </p>
                 <form onSubmit={handleSubmit}>
                     <label>
